@@ -32,11 +32,16 @@ namespace PlanningParadiseAdmin
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                 .AddEntityFrameworkStores<ApplicationDbContext>()
-                 .AddDefaultTokenProviders();
+            services.AddIdentity<ApplicationUser, IdentityRole>(
+               options =>
+               {
+                   options.SignIn.RequireConfirmedAccount = true;
+               }).AddEntityFrameworkStores<ApplicationDbContext>()
+                 .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>
+                 (TokenOptions.DefaultProvider);
             services.AddMvc();
             services.AddHealthChecks();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,7 +70,7 @@ namespace PlanningParadiseAdmin
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{area=Admin}/{controller=Homes}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }
