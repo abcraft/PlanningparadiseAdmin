@@ -1,0 +1,54 @@
+﻿@model PlanningParadiseAdmin.Models.Team
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Team</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Member_Name" class="control-label"></label>
+                <input asp-for="Member_Name" class="form-control" />
+                <span asp-validation-for="Member_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Designatin" class="control-label"></label>
+                <input asp-for="Designatin" class="form-control" />
+                <span asp-validation-for="Designatin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Member_Text" class="control-label"></label>
+                <input asp-for="Member_Text" class="form-control" />
+                <span asp-validation-for="Member_Text" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Member_Img" class="control-label"></label>
+                <input type="file" asp-for="Member_Img" class="form-control" />
+                <span asp-validation-for="Member_Img" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsAcctive" /> @Html.DisplayNameFor(model => model.IsAcctive)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
