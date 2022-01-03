@@ -1,0 +1,118 @@
+﻿@model PlanningParadiseAdmin.Models.Banner
+@{
+    ViewData["Title"] = "Banner";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Banner</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Banner</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Who are images Edith</h3>
+                    </div>
+                    <form asp-action="Banner"  enctype="multipart/form-data" >
+                        <div class="card-body">
+                            <div class="row">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input type="hidden" asp-for="ID" />
+                                <input type="hidden" asp-for="ServiceBanner_Img" />
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">About US</label>
+                                        <input type="text" asp-for="AboutBanner_Heading" class="form-control" />
+                                        <img class="img-fluid" src="~/Images/Banner/@Model.AboutBanner_Img" />
+                                        <input type="file" asp-for="AboutBanner_Img" class="form-control" />
+
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Services</label>
+                                        <input type="text" asp-for="ServiceBanner_Heading" class="form-control" />
+                                        <img class="img-fluid" src="~/Images/Banner/@Model.ServiceBanner_Img" />
+                                        <input type="file" asp-for="ServiceBanner_Img" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Destination</label>
+                                        <input type="text" asp-for="DestinationBanner_Heading" class="form-control" />
+                                        <img class="img-fluid" src="~/Images/Banner/@Model.DestinationBanner_Img" />
+                                        <input type="file" asp-for="DestinationBanner_Img" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Gallery</label>
+                                        <input type="text" asp-for="GalleryBanner_Heading" class="form-control" />
+                                        <img class="img-fluid" src="~/Images/Banner/@Model.GalleryBanner_Img" />
+                                        <input type="file" asp-for="GalleryBanner_Img" class="form-control" />
+                                    </div>
+
+                                </div>
+
+                               
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">FAQ</label>
+                                        <input type="text" asp-for="FaqBanner_Heading" class="form-control" />
+                                        <img class="img-fluid" src="~/Images/Banner/@Model.FaqBanner_Img" />
+                                        <input type="file" asp-for="FaqBanner_Img" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Blog</label>
+                                        <input type="text" asp-for="BlogBanner_Heading" class="form-control" />
+                                        <img class="img-fluid" src="~/Images/Banner/@Model.BlogBanner_Img" />
+                                        <input type="file" asp-for="BlogBanner_Img" class="form-control" />
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Contact</label>
+                                        <input type="text" asp-for="ContactBanner_Heading" class="form-control" />
+                                        <img class="img-fluid" src="~/Images/Banner/@Model.ContactBanner_Img" />
+                                        <input type="file" asp-for="ContactBanner_Img" class="form-control" />
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <input type="submit" value="Create" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
