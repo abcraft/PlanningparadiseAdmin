@@ -1,0 +1,59 @@
+﻿@model PlanningParadiseAdmin.Models.AboutUs
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>AboutUs</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="About_Heading" class="control-label"></label>
+                <input asp-for="About_Heading" class="form-control" />
+                <span asp-validation-for="About_Heading" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="About_Para1" class="control-label"></label>
+                <input asp-for="About_Para1" class="form-control" />
+                <span asp-validation-for="About_Para1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="About_Para2" class="control-label"></label>
+                <input asp-for="About_Para2" class="form-control" />
+                <span asp-validation-for="About_Para2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="About_Para3" class="control-label"></label>
+                <input asp-for="About_Para3" class="form-control" />
+                <span asp-validation-for="About_Para3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="About_Qoute" class="control-label"></label>
+                <input asp-for="About_Qoute" class="form-control" />
+                <span asp-validation-for="About_Qoute" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
