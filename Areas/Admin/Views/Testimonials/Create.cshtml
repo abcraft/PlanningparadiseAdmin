@@ -24,17 +24,17 @@
     <div class="container-fluid">
         <div class="row">
             <!-- left column -->
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <!-- general form elements -->
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Create Testimonials</h3>
+                        <h3 class="card-title">Testimonial Content</h3>
                     </div>
-                    <form asp-action="Create" >
+                    <form asp-action="Create">
                         <div class="card-body">
                             <div class="row">
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                <div class="col-sm-12">
+                                <div class="col-sm-6">
                                     <div class="form-group">
                                         <label asp-for="Testimonial_Name" class="control-label"></label>
                                         <input asp-for="Testimonial_Name" class="form-control" />
@@ -46,27 +46,30 @@
                                         <span asp-validation-for="Testimonial_Text" class="text-danger"></span>
                                     </div>
                                     @*<div class="form-group">
-                                        <label asp-for="Testimonial_Order" class="control-label"></label>
-                                        <input asp-for="Testimonial_Order" class="form-control" />
-                                        <span asp-validation-for="Testimonial_Order" class="text-danger"></span>
-                                    </div>*@
+                                <label asp-for="Testimonial_Order" class="control-label"></label>
+                                <input asp-for="Testimonial_Order" class="form-control" />
+                                <span asp-validation-for="Testimonial_Order" class="text-danger"></span>
+                            </div>*@
                                     <div class="form-group">
                                         <input type="submit" value="Create" class="btn btn-primary" />
                                     </div>
+                                    <div>
+                                        <a asp-action="Index">Back to List</a>
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </form>
                 </div>
             </div>
 
-            <div>
-                <a asp-action="Index">Back to List</a>
-            </div>
+            
 
-            @section Scripts {
-                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-            }
-</div>
-</div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
 

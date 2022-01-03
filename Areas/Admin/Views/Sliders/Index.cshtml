@@ -5,56 +5,82 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Index</h1>
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Index</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Index</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
+<p style="padding-left:20px">
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Slider_Img)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Slider_Heading)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Slider_SubHead)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Slider_Order)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsActive)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                <img class="img-fluid" src="~/Images/slider/@item.Slider_Img" alt="Blog Image" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Slider_Heading)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Slider_SubHead)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Slider_Order)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Slider_Img)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Slider_Heading)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Slider_SubHead)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Slider_Order)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.IsActive)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <img class="img-fluid" src="~/Images/slider/@item.Slider_Img" alt="Blog Image" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Slider_Heading)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Slider_SubHead)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Slider_Order)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IsActive)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                                        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
