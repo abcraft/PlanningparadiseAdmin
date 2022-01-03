@@ -5,56 +5,82 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Index</h1>
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Index</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Teams</a></li>
+                    <li class="breadcrumb-item active">Index</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
+<p style="padding-left:20px">
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Member_Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Designatin)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Member_Text)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Member_Img)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsAcctive)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Member_Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Designatin)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Member_Text)
-            </td>
-            <td>
-                <img class="img-fluid" src="~/Images/team/@item.Member_Img" alt="Blog Image" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsAcctive)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Member_Name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Designatin)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Member_Text)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Member_Img)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.IsAcctive)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Member_Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Designatin)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Member_Text)
+                                    </td>
+                                    <td>
+                                        <img class="img-fluid" src="~/Images/team/@item.Member_Img" alt="Blog Image" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IsAcctive)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                                        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

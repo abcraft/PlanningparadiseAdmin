@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PlanningParadiseAdmin.Models.Testimonial>
+﻿@model IEnumerable<PlanningParadiseAdmin.Models.Blog>
 
 @{
     ViewData["Title"] = "Index";
@@ -9,12 +9,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Index</h1>
+                <h1 class="m-0 text-dark">Home</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Testimonial</a></li>
-                    <li class="breadcrumb-item active">Index</li>
+                    <li class="breadcrumb-item"><a href="#">Homes</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -22,6 +22,7 @@
 </div>
 
 <p style="padding-left:20px">
+
     <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
 
@@ -34,13 +35,19 @@
                         <thead>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Testimonial_Name)
+                                    @Html.DisplayNameFor(model => model.Blog_Img)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Testimonial_Text)
+                                    @Html.DisplayNameFor(model => model.Blog_Heading)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Testimonial_Order)
+                                    @Html.DisplayNameFor(model => model.BlogShort_Detail)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.BlogLong_Detail)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.IsActive)
                                 </th>
                                 <th></th>
                             </tr>
@@ -50,13 +57,19 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Testimonial_Name)
+                                        <img class="img-fluid" src="~/Images/blogs/@item.Blog_Img" width="250" height="250" alt="Blog Image" />
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Testimonial_Text)
+                                        @Html.DisplayFor(modelItem => item.Blog_Heading)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Testimonial_Order)
+                                        @Html.DisplayFor(modelItem => item.BlogShort_Detail)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.BlogLong_Detail)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IsActive)
                                     </td>
                                     <td>
                                         <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
@@ -70,5 +83,5 @@
                 </div>
             </div>
         </div>
-    </div>
+     </div>
 </section>

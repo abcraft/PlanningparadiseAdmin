@@ -1,4 +1,4 @@
-﻿@model PlanningParadiseAdmin.Models.AboutUs
+﻿@model PlanningParadiseAdmin.Models.Blog
 
 @{
     ViewData["Title"] = "Edit";
@@ -9,12 +9,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Sliders</h1>
+                <h1>Blogs</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Sliders</a></li>
-                    <li class="breadcrumb-item active">Edit Sliders</li>
+                    <li class="breadcrumb-item"><a href="#">Blogs</a></li>
+                    <li class="breadcrumb-item active">Edit Blog</li>
                 </ol>
             </div>
         </div>
@@ -28,7 +28,7 @@
                 <!-- general form elements -->
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Slider Content</h3>
+                        <h3 class="card-title">Destination Wedding Details</h3>
                     </div>
                     <form asp-action="Edit">
                         <div class="card-body">
@@ -36,58 +36,54 @@
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                 <input type="hidden" asp-for="ID" />
                                 <div class="col-md-6">
+                                    
                                     <div class="form-group">
-                                        <label asp-for="About_Heading" class="control-label"></label>
-                                        <input asp-for="About_Heading" class="form-control" />
-                                        <span asp-validation-for="About_Heading" class="text-danger"></span>
+                                        <label asp-for="Blog_Heading" class="control-label"></label>
+                                        <input asp-for="Blog_Heading" class="form-control" />
+                                        <span asp-validation-for="Blog_Heading" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="About_Para1" class="control-label"></label>
-                                        <textarea asp-for="About_Para1" class="form-control" rows="4"></textarea>
-                                        <span asp-validation-for="About_Para1" class="text-danger"></span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label asp-for="About_Qoute" class="control-label"></label>
-                                        <input asp-for="About_Qoute" class="form-control" />
-                                        <span asp-validation-for="About_Qoute" class="text-danger"></span>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label asp-for="About_Para2" class="control-label"></label>
-                                        <textarea asp-for="About_Para2" class="form-control" rows="4"></textarea>
-                                        <span asp-validation-for="About_Para2" class="text-danger"></span>
+                                        <label asp-for="BlogShort_Detail" class="control-label"></label>
+                                        <textarea asp-for="BlogShort_Detail" class="form-control" rows="5"></textarea>
+                                        <span asp-validation-for="BlogShort_Detail" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label asp-for="About_Para3" class="control-label"></label>
-                                        <textarea asp-for="About_Para3" class="form-control" rows="4"></textarea>
-                                        <span asp-validation-for="About_Para3" class="text-danger"></span>
+                                        <label asp-for="Blog_Img" class="control-label"></label>
+                                        <input asp-for="Blog_Img" class="form-control" />
+                                        <span asp-validation-for="Blog_Img" class="text-danger"></span>
                                     </div>
-
+                                    <div class="form-group">
+                                        <label asp-for="BlogLong_Detail" class="control-label"></label>
+                                        <textarea asp-for="BlogLong_Detail" class="form-control" rows="5"></textarea>
+                                        <span asp-validation-for="BlogLong_Detail" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
                                     <div class="form-group form-check">
                                         <label class="form-check-label">
                                             <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
                                         </label>
                                     </div>
                                     <div class="form-group">
-                                        <input type="submit" value="Create" class="btn btn-primary" />
-                                    </div>
-                                    <div>
-                                        <a asp-action="Index">Back to List</a>
+                                        <input type="submit" value="Save" class="btn btn-primary" />
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </form>
                 </div>
             </div>
+
+            <div>
+                <a asp-action="Index">Back to List</a>
+            </div>
+
         </div>
     </div>
 </section>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
