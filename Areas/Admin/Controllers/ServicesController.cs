@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PlanningParadiseAdmin.Data;
 using PlanningParadiseAdmin.Models;
+using PlanningParadiseAdmin.ViewModel;
 
 namespace PlanningParadiseAdmin.Areas.Admin.Controllers
 {
@@ -76,9 +77,11 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
                     string path = Path.Combine(wwwRootPath + "/Images/services", fileName);
                     FileStream fileStream1 = new FileStream(path, FileMode.Create);
                     f.CopyTo(fileStream1);
+
                 }
                 _context.Add(services);
                 await _context.SaveChangesAsync();
+                TempData["message"] = "Saved";
                 return RedirectToAction(nameof(Index));
             }
             return View(services);
@@ -91,13 +94,21 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
+            
             var services = await _context.Services.FindAsync(id);
+            ServicesVM svm = new ServicesVM();
+            svm.ID = services.ID;
+            svm.Service_Heading = services.Service_Heading;
+            svm.Service_Img = services.Service_Img;
+            svm.ExistingService_Img = services.Service_Img;
+            svm.Servie_Text = services.Servie_Text;
+
+           
             if (services == null)
             {
                 return NotFound();
             }
-            return View(services);
+            return View(svm);
         }
 
         // POST: Admin/Services/Edit/5
@@ -105,7 +116,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Service_Img,Service_Heading,Servie_Text,IsActive")] Services services)
+        public async Task<IActionResult> Edit(int id, ServicesVM services)
         {
             if (id != services.ID)
             {
@@ -116,8 +127,36 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             {
                 try
                 {
-                    _context.Update(services);
+                    string uniqueFileName = "";
+                    if (HttpContext.Request.Form.Files.Count() > 0)
+                    {
+                        var f = HttpContext.Request.Form.Files[0];
+                        string wwwRootPath = _hostEnvironment.WebRootPath;
+                        string fileName = Path.GetFileNameWithoutExtension(f.FileName);
+                        string extension = Path.GetExtension(f.FileName);
+                        fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                        uniqueFileName = fileName;
+                        string path = Path.Combine(wwwRootPath + "/Images/services", fileName);
+                        FileStream fileStream1 = new FileStream(path, FileMode.Create);
+                        f.CopyTo(fileStream1);
+
+                    }
+                    else
+                    {
+                        uniqueFileName = services.ExistingService_Img;
+                    }
+                    Services svm = new Services();
+                    svm.ID = services.ID;
+                    svm.Service_Heading = services.Service_Heading;
+                    svm.Service_Img = uniqueFileName;
+                    svm.Servie_Text = services.Servie_Text;
+                    svm.IsActive = services.IsActive;
+                    _context.Update(svm);
+
                     await _context.SaveChangesAsync();
+                    TempData["message"] = "Updated";
+                    return RedirectToAction(nameof(Index));
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -161,6 +200,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             var services = await _context.Services.FindAsync(id);
             _context.Services.Remove(services);
             await _context.SaveChangesAsync();
+            TempData["message"] = "Delete";
             return RedirectToAction(nameof(Index));
         }
 
