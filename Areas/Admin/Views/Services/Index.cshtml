@@ -78,3 +78,35 @@
         </div>
     </div>
 </section>
+<script src="~/plugins/jquery/jquery.min.js"></script>
+
+
+@if ((string)TempData["message"] != "")
+{
+
+    <script type="text/javascript">
+        debugger;
+        var msgtype = '@TempData["message"]';
+    $(function () {
+    const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+    });
+
+        if (msgtype == "Saved") {
+            toastr.success('Saved Successfully')
+        }
+        if (msgtype == "Updated") {
+            toastr.success('Updated Successfully')
+        }
+        if (msgtype == "Delete") {
+            toastr.success('Deleted Successfully')
+        }
+        if (msgtype == "All already Exists") {
+            toastr.error('Product Name is Already Exist')
+        }
+    });
+    </script>
+}

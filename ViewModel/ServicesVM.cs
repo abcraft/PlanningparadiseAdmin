@@ -9,6 +9,7 @@ namespace PlanningParadiseAdmin.ViewModel
     {
         public int ID { get; set; }
         public string Service_Img { get; set; }
+        public string ExistingService_Img { get; set; }
         public string Service_Heading { get; set; }
         public string Servie_Text { get; set; }
         public bool IsActive { get; set; }
