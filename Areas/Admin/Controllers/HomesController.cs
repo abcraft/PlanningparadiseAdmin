@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +14,7 @@ using PlanningParadiseAdmin.Models;
 
 namespace PlanningParadiseAdmin.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     public class HomesController : Controller
     {

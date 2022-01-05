@@ -26,6 +26,11 @@
     <Folder Include="wwwroot\Images\team\" />
     <Folder Include="wwwroot\Images\services\" />
     <Folder Include="wwwroot\Images\wwaImages\" />
+    <Folder Include="wwwroot\userasset\images_02\gallery\" />
+    <Folder Include="wwwroot\userasset\images_02\misc\" />
+    <Folder Include="wwwroot\userasset\images_02\news\" />
+    <Folder Include="wwwroot\userasset\images_02\services\" />
+    <Folder Include="wwwroot\userasset\images_02\slider\" />
   </ItemGroup>
 
 </Project>

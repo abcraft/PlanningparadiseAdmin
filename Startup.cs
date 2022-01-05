@@ -32,11 +32,8 @@ namespace PlanningParadiseAdmin
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddIdentity<ApplicationUser, IdentityRole>(
-               options =>
-               {
-                   options.SignIn.RequireConfirmedAccount = true;
-               }).AddEntityFrameworkStores<ApplicationDbContext>()
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddDefaultUI().
+                AddEntityFrameworkStores<ApplicationDbContext>()
                  .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>
                  (TokenOptions.DefaultProvider);
             services.AddMvc();
@@ -68,9 +65,14 @@ namespace PlanningParadiseAdmin
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapAreaControllerRoute(
+                name: "Admin",
+                areaName: "Admin",
+                pattern: "Admin/{controller=Homes}/{action=Index}/{id?}");
+
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{area=Admin}/{controller=Homes}/{action=Index}/{id?}");
+                     name: "default",
+                     pattern: "{controller=Admin}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }
