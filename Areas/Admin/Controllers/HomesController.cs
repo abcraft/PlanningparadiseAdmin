@@ -246,7 +246,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             }
             return View(home);
         }
-
+        [HttpGet]
         public async Task<IActionResult> Banner()
         {
             var banner = await _context.Banner.FindAsync(1);

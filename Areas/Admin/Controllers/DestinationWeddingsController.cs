@@ -112,9 +112,9 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, DestinationWeddingVM destinationWedding)
+        public async Task<IActionResult> Edit(int id, DestinationWeddingVM dwvm)
         {
-            if (id != destinationWedding.ID)
+            if (id != dwvm.ID)
             {
                 return NotFound();
             }
@@ -133,21 +133,21 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
                         string extension = Path.GetExtension(f.FileName);
                         fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
                         uniqueFileName = fileName;
-                        string path = Path.Combine(wwwRootPath + "/Images/services", fileName);
+                        string path = Path.Combine(wwwRootPath + "/Images/DestinationWedding", fileName);
                         FileStream fileStream1 = new FileStream(path, FileMode.Create);
                         f.CopyTo(fileStream1);
 
                     }
                     else
                     {
-                        uniqueFileName = destinationWedding.ExistingDestination_Img;
+                        uniqueFileName = dwvm.ExistingDestination_Img;
                     }
-                    DestinationWedding dwvm = new DestinationWedding();
-                    dwvm.ID = destinationWedding.ID;
-                    dwvm.Destination_Heading = destinationWedding.Destination_Heading;
-                    dwvm.Destination_Img = uniqueFileName;
-                    dwvm.IsActive = destinationWedding.IsActive;
-                    _context.Update(dwvm);
+                    DestinationWedding destinationWedding = new DestinationWedding();
+                    destinationWedding.ID = dwvm.ID;
+                    destinationWedding.Destination_Heading = dwvm.Destination_Heading;
+                    destinationWedding.Destination_Img = uniqueFileName;
+                    destinationWedding.IsActive = dwvm.IsActive;
+                    _context.Update(destinationWedding);
 
                     await _context.SaveChangesAsync();
                     TempData["message"] = "Updated";
@@ -155,7 +155,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DestinationWeddingExists(destinationWedding.ID))
+                    if (!DestinationWeddingExists(dwvm.ID))
                     {
                         return NotFound();
                     }
@@ -166,7 +166,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(destinationWedding);
+            return View(dwvm);
         }
 
         // GET: Admin/DestinationWeddings/Delete/5

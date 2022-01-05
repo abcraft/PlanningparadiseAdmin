@@ -114,9 +114,9 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, GalleryVM gallery)
+        public async Task<IActionResult> Edit(int id, GalleryVM gvm)
         {
-            if (id != gallery.ID)
+            if (id != gvm.ID)
             {
                 return NotFound();
             }
@@ -134,20 +134,20 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
                         string extension = Path.GetExtension(f.FileName);
                         fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
                         uniqueFileName = fileName;
-                        string path = Path.Combine(wwwRootPath + "/Images/services", fileName);
+                        string path = Path.Combine(wwwRootPath + "/Images/gallery", fileName);
                         FileStream fileStream1 = new FileStream(path, FileMode.Create);
                         f.CopyTo(fileStream1);
 
                     }
                     else
                     {
-                        uniqueFileName = gallery.ExistingGallery_Img;
+                        uniqueFileName = gvm.ExistingGallery_Img;
                     }
-                    Gallery gvm = new Gallery();
-                    gvm.ID = gallery.ID;
-                    gvm.Gallery_Img = gallery.Gallery_Img;
-                    gvm.IsActive = gallery.IsActive;
-                    _context.Update(gvm);
+                    Gallery gallery = new Gallery();
+                    gallery.ID = gvm.ID;
+                    gallery.Gallery_Img = uniqueFileName;
+                    gallery.IsActive = gvm.IsActive;
+                    _context.Update(gallery);
 
                     await _context.SaveChangesAsync();
                     TempData["message"] = "Updated";
@@ -155,7 +155,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!GalleryExists(gallery.ID))
+                    if (!GalleryExists(gvm.ID))
                     {
                         return NotFound();
                     }
@@ -166,7 +166,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(gallery);
+            return View(gvm);
         }
 
         // GET: Admin/Galleries/Delete/5
