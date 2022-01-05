@@ -1,22 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PlanningParadiseAdmin.Data;
 using PlanningParadiseAdmin.Models;
+using PlanningParadiseAdmin.ViewModel;
+
 
 namespace PlanningParadiseAdmin.Controllers
 {
     public class AboutUsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public AboutUsController(ApplicationDbContext context)
+
+        public AboutUsController(ApplicationDbContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            this._hostEnvironment = hostEnvironment;
         }
 
         // GET: AboutUs
@@ -60,6 +67,7 @@ namespace PlanningParadiseAdmin.Controllers
             {
                 _context.Add(aboutUs);
                 await _context.SaveChangesAsync();
+                TempData["message"] = "Saved";
                 return RedirectToAction(nameof(Index));
             }
             return View(aboutUs);
@@ -74,6 +82,14 @@ namespace PlanningParadiseAdmin.Controllers
             }
 
             var aboutUs = await _context.AboutUs.FindAsync(id);
+            AboutUsVM avm = new AboutUsVM();
+            avm.ID = aboutUs.ID;
+            avm.About_Heading = aboutUs.About_Heading;
+            avm.About_Para1 = aboutUs.About_Para1;
+            avm.About_Para2 = aboutUs.About_Para2;
+            avm.About_Para3 = aboutUs.About_Para3;
+            avm.About_Qoute = aboutUs.About_Qoute;
+
             if (aboutUs == null)
             {
                 return NotFound();
@@ -86,7 +102,7 @@ namespace PlanningParadiseAdmin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,About_Heading,About_Para1,About_Para2,About_Para3,About_Qoute,IsActive")] AboutUs aboutUs)
+        public async Task<IActionResult> Edit(int id, AboutUsVM aboutUs)
         {
             if (id != aboutUs.ID)
             {
@@ -97,8 +113,18 @@ namespace PlanningParadiseAdmin.Controllers
             {
                 try
                 {
-                    _context.Update(aboutUs);
+                    AboutUsVM avm = new AboutUsVM();
+                    avm.ID = aboutUs.ID;
+                    avm.About_Heading = aboutUs.About_Heading;
+                    avm.About_Para1 = aboutUs.About_Para1;
+                    avm.About_Para2 = aboutUs.About_Para2;
+                    avm.About_Para3 = aboutUs.About_Para3;
+                    avm.About_Qoute = aboutUs.About_Qoute;
+                    _context.Update(avm);
+
                     await _context.SaveChangesAsync();
+                    TempData["message"] = "Updated";
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -142,6 +168,7 @@ namespace PlanningParadiseAdmin.Controllers
             var aboutUs = await _context.AboutUs.FindAsync(id);
             _context.AboutUs.Remove(aboutUs);
             await _context.SaveChangesAsync();
+            TempData["message"] = "Delete";
             return RedirectToAction(nameof(Index));
         }
 

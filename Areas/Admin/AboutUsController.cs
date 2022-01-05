@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PlanningParadiseAdmin.Data;
 using PlanningParadiseAdmin.Models;
+using PlanningParadiseAdmin.ViewModel;
+
 
 namespace PlanningParadiseAdmin.Areas.Admin
 {
+    [Authorize]
     [Area("Admin")]
     public class AboutUsController : Controller
     {

@@ -9,6 +9,7 @@ namespace PlanningParadiseAdmin.ViewModel
     {
         public int ID { get; set; }
         public string Destination_Img { get; set; }
+        public string ExistingDestination_Img { get; set; }
         public string Destination_Heading { get; set; }
         public bool IsNational { get; set; }
         public bool IsInterNational { get; set; }

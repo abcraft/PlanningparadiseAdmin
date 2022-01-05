@@ -12,6 +12,7 @@ namespace PlanningParadiseAdmin.ViewModel
         public string Designatin { get; set; }
         public string Member_Text { get; set; }
         public string Member_Img { get; set; }
+        public string ExistingMember_Img { get; set; }
         public bool IsAcctive { get; set; }
     }
 }

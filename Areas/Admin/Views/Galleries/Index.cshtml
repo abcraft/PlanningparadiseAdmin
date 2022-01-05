@@ -1,0 +1,109 @@
+﻿@model IEnumerable<PlanningParadiseAdmin.Models.Gallery>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Index</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Gallery</a></li>
+                    <li class="breadcrumb-item active">Index</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+<p style="padding-left:20px">
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Gallery_Img)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Gallery_Video)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.IsActive)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Gallery_Img)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Gallery_Video)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IsActive)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                                        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@if ((string)TempData["message"] != "")
+{
+
+    <script type="text/javascript">
+        debugger;
+        var msgtype = '@TempData["message"]';
+    $(function () {
+    const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+    });
+
+
+        if (msgtype == "Saved") {
+            toastr.success('Saved Successfully')
+        }
+        if (msgtype == "Updated") {
+            toastr.success('Updated Successfully')
+        }
+        if (msgtype == "Delete") {
+            toastr.success('Deleted Successfully')
+        }
+        if (msgtype == "All already Exists") {
+            toastr.error('Product Name is Already Exist')
+        }
+    });
+
+        console.log(msgtype);
+    </script>
+}

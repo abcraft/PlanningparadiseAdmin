@@ -9,6 +9,7 @@ namespace PlanningParadiseAdmin.ViewModel
     {
         public int ID { get; set; }
         public string Gallery_Img { get; set; }
+        public string ExistingGallery_Img { get; set; }
         public string Gallery_Video { get; set; }
         public bool IsActive { get; set; }
     }

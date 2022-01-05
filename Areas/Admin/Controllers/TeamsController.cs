@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PlanningParadiseAdmin.Data;
 using PlanningParadiseAdmin.Models;
+using PlanningParadiseAdmin.ViewModel;
+
 
 namespace PlanningParadiseAdmin.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     public class TeamsController : Controller
     {
@@ -77,6 +81,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
                 }
                 _context.Add(team);
                 await _context.SaveChangesAsync();
+                TempData["message"] = "Saved";
                 return RedirectToAction(nameof(Index));
             }
             return View(team);
@@ -91,11 +96,20 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             }
 
             var team = await _context.Team.FindAsync(id);
+            TeamVM tvm = new TeamVM();
+            tvm.ID = team.ID;
+            tvm.Member_Name = team.Member_Name;
+            tvm.Member_Img = team.Member_Img;
+            tvm.ExistingMember_Img = team.Member_Img;
+            tvm.Designatin = team.Designatin;
+            tvm.Member_Text = team.Member_Text;
+            tvm.IsAcctive = team.IsAcctive;
+
             if (team == null)
             {
                 return NotFound();
             }
-            return View(team);
+            return View(tvm);
         }
 
         // POST: Admin/Teams/Edit/5
@@ -103,9 +117,9 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Member_Name,Designatin,Member_Text,Member_Img,IsAcctive")] Team team)
+        public async Task<IActionResult> Edit(int id,TeamVM tvm)
         {
-            if (id != team.ID)
+            if (id != tvm.ID)
             {
                 return NotFound();
             }
@@ -114,12 +128,41 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             {
                 try
                 {
+                    string uniqueFileName = "";
+                    if (HttpContext.Request.Form.Files.Count() > 0)
+                    {
+                        var f = HttpContext.Request.Form.Files[0];
+                        string wwwRootPath = _hostEnvironment.WebRootPath;
+                        string fileName = Path.GetFileNameWithoutExtension(f.FileName);
+                        string extension = Path.GetExtension(f.FileName);
+                        fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                        uniqueFileName = fileName;
+                        string path = Path.Combine(wwwRootPath + "/Images/team", fileName);
+                        FileStream fileStream1 = new FileStream(path, FileMode.Create);
+                        f.CopyTo(fileStream1);
+
+                    }
+                    else
+                    {
+                        uniqueFileName = tvm.ExistingMember_Img;
+                    }
+                    Team team = new Team();
+                    team.ID = tvm.ID;
+                    team.Member_Name = tvm.Member_Name;
+                    team.Member_Img = uniqueFileName;
+                    team.Member_Text = tvm.Member_Text;
+                    team.Designatin = tvm.Designatin;
+                    team.IsAcctive = tvm.IsAcctive;
                     _context.Update(team);
+
+
                     await _context.SaveChangesAsync();
+                    TempData["message"] = "Updated";
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TeamExists(team.ID))
+                    if (!TeamExists(tvm.ID))
                     {
                         return NotFound();
                     }
@@ -130,7 +173,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(team);
+            return View(tvm);
         }
 
         // GET: Admin/Teams/Delete/5
@@ -159,6 +202,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             var team = await _context.Team.FindAsync(id);
             _context.Team.Remove(team);
             await _context.SaveChangesAsync();
+            TempData["message"] = "Delete";
             return RedirectToAction(nameof(Index));
         }
 
