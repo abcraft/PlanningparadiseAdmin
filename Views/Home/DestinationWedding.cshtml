@@ -1,0 +1,468 @@
+﻿@{
+    ViewData["Title"] = "Destination Wedding - The Planning Paradise";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<style>
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            position: fixed;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            -o-transition: 0.5s !important;
+            -ms-transition: 0.5s !important;
+            -moz-transition: 0.5s !important;
+            -webkit-transition: 0.5s !important;
+            transition: 0.5s !important;
+
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            border: 1px solid #888;
+            width: 80%;
+            text-align: center;
+        }
+
+        .modal-img img {
+            width: 350px;
+        }
+
+        .modal-back {
+            background: url(./images_02/background/flowers2.png) top 0px left 0px, url(./images_02/background/flowers1.png) top 0px right 0px;
+            background-size: 5% !important;
+            background-repeat: no-repeat;
+            padding: 10px 40px;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #535353;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .close1 {
+            color: #535353;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .close1:hover,
+        .close1:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @@media(max-width: 415px) {
+            .modal-back {
+                padding: 10px 15px;
+            }
+
+            .modal-img img {
+                width: 200px;
+            }
+        }
+</style>
+<!-- subheader -->
+<section id="subheader" class="dark no-top no-bottom" data-stellar-background-ratio=".2">
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center fadeScroll relative" data-scroll-speed="2">
+                    <h2 data-scroll-speed="8">Wedding Destination</h2>
+                    <div class="spacer-double"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- subheader close -->
+<!-- content begin -->
+<div id="content" class="no-top no-bottom">
+
+    <!-- Destinaton Wedding Start -->
+
+    <div id="content" class="service-cards" style="width: 100%; height: auto;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+
+
+                    <div class="de_tab tab_style_3 text-center">
+                        <ul class="de_nav">
+                            <li class="active" data-link="#section-services-tab"><span>National</span></li>
+                            <li data-link="#section-services-tab"><span>International</span></li>
+                        </ul>
+
+                        <div class="de_tab_content">
+
+                            <div id="tab1" class="tab_single_content">
+                                <div class="row">
+
+                                    <div class="col-md-3 col-sm-6 text-center servicecard-col">
+                                        <div class="service-card1">
+                                            <img src="~/userasset/images/Locations/goa.jpg" alt="" class="sc-image" />
+                                            <div class="sc-overly">
+                                                <div class="service-card-content">
+                                                    <h2 class="sc-content-title">Goa</h2>
+                                                    <hr class="sc-content-hr">
+                                                    <button id="myBtn"
+                                                            onclick="showpop('Comprising of two zones, North Goa and South Goa each of them have something peculiar to offer their avid sightseer. While North Goa is known for its vibrant lounges, nightlife and modern restaurants, South Goa is well known for its peaceful pristine beaches with huge resorts that offer the best location for your magical wedding.')"
+                                                            class="sc-content-btn">
+                                                        View Details <i class="fa fa-arrow-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-3 col-sm-6 text-center servicecard-col">
+                                        <div class="service-card1">
+                                            <img src="~/userasset/images/Locations/udaipur.jpg" alt="" class="sc-image" />
+                                            <div class="sc-overly">
+                                                <div class="service-card-content">
+                                                    <h2 class="sc-content-title">Udaipur</h2>
+                                                    <hr class="sc-content-hr">
+                                                    <button id="myBtn1"
+                                                            onclick="showpop('Udaipur has been acclaimed as &quot;the best wedding destination in the world\x22 by Travel and Leisure Magazine in the recent times. Udaipur lies in the shadows of the Aravalli Mountains. The geography of the area makes the visitor feel they are at a Hill Station offering the greenery and charm of an old Heritage City. Some of the finest hotels in the country are situated here ready to host your fairy tale wedding.')"
+                                                            class="sc-content-btn">
+                                                        View Details <i class="fa fa-arrow-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-3 col-sm-6 text-center servicecard-col ">
+                                        <div class="service-card1">
+                                            <img src="~/userasset/images/Locations/japur.jpg" alt="" class="sc-image" />
+                                            <div class="sc-overly">
+                                                <div class="service-card-content">
+                                                    <h2 class="sc-content-title">Jaipur</h2>
+                                                    <hr class="sc-content-hr">
+                                                    <button id="myBtn2"
+                                                            onclick="showpop('Jaipur which is popularly known as the “Pink City” of India has numerous historic stories to tell. Its ancient lavish palaces, exotic forts and heritage structures has experienced some of the best weddings not only from within the country but also international celebrities alike. Undoubtedly, its rich legacy and high hospitality quotient will ensure you and your guests have a royal wedding experience.')"
+                                                            class="sc-content-btn">
+                                                        View Details <i class="fa fa-arrow-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-3 col-sm-6 text-center servicecard-col">
+                                        <div class="service-card1">
+                                            <img src="~/userasset/images/Locations/hydrabad.jpg" alt="" class="sc-image" />
+                                            <div class="sc-overly">
+                                                <div class="service-card-content">
+                                                    <h2 class="sc-content-title">Hyderabad</h2>
+                                                    <hr class="sc-content-hr">
+                                                    <button id="myBtn3"
+                                                            onclick="showpop('Hyderabad known as “The Pearl City” has an unmatched blend of history and modernity to hypnotize the sightseer. This beautiful city of Nizams holds a history as old as 400 years and ensures a promising and unique wedding experience. It has a balanced blend of traditional and modern culture with ancient monuments, lakes and religious places. ')"
+                                                            class="sc-content-btn">
+                                                        View Details <i class="fa fa-arrow-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-3 col-sm-6 text-center servicecard-col ">
+                                        <div class="service-card1">
+                                            <img src="~/userasset/images/Locations/mahabrleshwar.jpg" alt=""
+                                                 class="sc-image" />
+                                            <div class="sc-overly">
+                                                <div class="service-card-content">
+                                                    <h2 class="sc-content-title">Mahabaleshwer</h2>
+                                                    <hr class="sc-content-hr">
+                                                    <button id="myBtn4"
+                                                            onclick="showpop('Well-known for its lush evergreen forests, breezy weather, and picturesque vistas, Mahabaleshwar is one of the most popular hill station of Maharashtra bound by valleys, this flourishing destination is a nature lover’s paradise that will ensure a peaceful and pristine location for planning your wedding.')"
+                                                            class="sc-content-btn">
+                                                        View Details <i class="fa fa-arrow-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-3 col-sm-6 text-center servicecard-col ">
+                                        <div class="service-card1">
+                                            <img src="~/userasset/images/Locations/abad2.jpg" alt="" class="sc-image" />
+                                            <div class="sc-overly">
+                                                <div class="service-card-content">
+                                                    <h2 class="sc-content-title">Aurangabad</h2>
+                                                    <hr class="sc-content-hr">
+                                                    <button id="myBtn5"
+                                                            onclick="showpop('Aurangabad, popularly known as the “City of Gates” and home to the replica of one of the Seven Wonders of the world ‘Taj Mahal’ that signifies LOVE, could be a great wedding destination for rich heritage lovers. The historical monuments of Ajanta & Ellora Caves acclaimed as world heritage sites by UNESCO can bear unforgettable wedding memories. ')"
+                                                            class="sc-content-btn">
+                                                        View Details <i class="fa fa-arrow-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-3 col-sm-6 text-center servicecard-col ">
+                                        <div class="service-card1">
+                                            <img src="~/userasset/images/Locations/lonavala.jpg" alt="" class="sc-image" />
+                                            <div class="sc-overly">
+                                                <div class="service-card-content">
+                                                    <h2 class="sc-content-title">Lonavala</h2>
+                                                    <hr class="sc-content-hr">
+                                                    <button id="myBtn6"
+                                                            onclick="showpop('Lonavala is yet another well-known Hill Station in Maharashtra that could be a promising wedding location for during monsoons, as this place turns into a paradise surrounded by the majestic Sahayadri hills covered with lots of greeneries, sparkling lakes and many waterfalls. It has a plethora of attractions like lakes, forts, caves and cliff tops to mesmerize the wedding guests. ')"
+                                                            class="sc-content-btn">
+                                                        View Details <i class="fa fa-arrow-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-3 col-sm-6 text-center servicecard-col ">
+                                        <div class="service-card1">
+                                            <img src="~/userasset/images/Locations/mumbai.jpg" alt="" class="sc-image" />
+                                            <div class="sc-overly">
+                                                <div class="service-card-content">
+                                                    <h2 class="sc-content-title">Mumbai</h2>
+                                                    <hr class="sc-content-hr">
+                                                    <button id="myBtn7"
+                                                            onclick="showpop('The uniqueness of Mumbai is beyond words as it has been regarded at the “City of Dreams”. If you are planning a wedding in Mumbai, make sure you consider the right places to imbibe the dynamic effervescence of this city. This can create indelible memories and a wedding location out of the heritage places, resorts, beautiful luxury hotels and etc.')"
+                                                            class="sc-content-btn">
+                                                        View Details <i class="fa fa-arrow-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- <div class="col-md-3 col-sm-6 text-center servicecard-col ">
+                                        <div class="service-card1">
+                                            <img src="~/userasset/images/Locations/Delhi.jpg" alt="" class="sc-image" />
+                                            <div class="sc-overly">
+                                                <div class="service-card-content">
+                                                    <h2 class="sc-content-title">Delhi</h2>
+                                                    <hr class="sc-content-hr">
+                                                    <button id="myBtn8" onclick="showpop('The uniqueness of Mumbai is beyond words as it has been regarded at the “City of Dreams”. If you are planning a wedding in Mumbai, make sure you consider the right places to imbibe the dynamic effervescence of this city. This can create indelible memories and a wedding location out of the heritage places, resorts, beautiful luxury hotels and etc.')" class="sc-content-btn">View Details <i
+                                                            class="fa fa-arrow-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div> -->
+
+                                    <div class="col-md-3 col-sm-6 text-center servicecard-col ">
+                                        <div class="service-card1">
+                                            <img src="~/userasset/images/Locations/pune.jpg" alt="" class="sc-image" />
+                                            <div class="sc-overly">
+                                                <div class="service-card-content">
+                                                    <h2 class="sc-content-title">Pune</h2>
+                                                    <hr class="sc-content-hr">
+                                                    <button id="myBtn9"
+                                                            onclick="showpop('Pune has a blend of rich history and modern updates that never fails to keep its tourists entertained. Nature has also been kind to the land as it is evident from the picturesque landscapes here. It is home to lakes, palaces, forts, resorts, luxury hotels and is easily accessible to many tourist destinations nearby. This could be an auspicious wedding destination!')"
+                                                            class="sc-content-btn">
+                                                        View Details <i class="fa fa-arrow-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div id="tab2" class="tab_single_content">
+                                <div class="row">
+
+                                    <div class="col-md-3 col-sm-6 text-center servicecard-col">
+                                        <div class="service-card1">
+                                            <img src="~/userasset/images/Locations/dubai 3.jpg" alt="" class="sc-image" />
+                                            <div class="sc-overly">
+                                                <div class="service-card-content">
+                                                    <h2 class="sc-content-title">Dubai</h2>
+                                                    <hr class="sc-content-hr">
+                                                    <button id="myBtn10"
+                                                            onclick="showpop('Dubai is a city in the United Arab Emirates known for luxury shopping, ultramodern architecture and a lively nightlife scene. It has now become a favorite for modern destination weddings. With good infrastructure and competitive logistics, theres much to offer you and your guests when they visit for a wedding. From the timeless tranquility of the desert to the lively bustle of the souk, Dubai offers a kaleidoscope of attractions for visitors.')"
+                                                            class="sc-content-btn">
+                                                        View Details <i class="fa fa-arrow-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-3 col-sm-6 text-center servicecard-col">
+                                        <div class="service-card1">
+                                            <img src="~/userasset/images/Locations/italy (2).jpg" alt="" class="sc-image" />
+                                            <div class="sc-overly">
+                                                <div class="service-card-content">
+                                                    <h2 class="sc-content-title">Italy</h2>
+                                                    <hr class="sc-content-hr">
+                                                    <button id="myBtn11"
+                                                            onclick="showpop('Mentioned in the world’s most iconic places, Italy is an epitome of beauty and history. It remains as a memorial to the creative imagination of architecture as the beauty of this place resides significantly in its architecture. It has beautiful lakes, coastlines, royal villa, luxurious resorts and hotels, green landscapes and floral beauty that could be a fairy-tale wedding location. ')"
+                                                            class="sc-content-btn">
+                                                        View Details <i class="fa fa-arrow-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-3 col-sm-6 text-center servicecard-col ">
+                                        <div class="service-card1">
+                                            <img src="~/userasset/images/Locations/thailand.jpg" alt="" class="sc-image" />
+                                            <div class="sc-overly">
+                                                <div class="service-card-content">
+                                                    <h2 class="sc-content-title">Thailand</h2>
+                                                    <hr class="sc-content-hr">
+                                                    <button id="myBtn12"
+                                                            onclick="showpop('Thailand is rich in culture and tradition with winding streets, small villages, forests, hills, wildlife that gives a warm, cosy and hospitable character. Your guests will be treated no less than royalty as it is embedded in their culture to respect and care for their guest in the highest possible manner. It has large world class resorts which certainly looks mesmerizing in pictures and videos. Considering the tropical climate most of the year, it is recommended to check the weather while planning your event.')"
+                                                            class="sc-content-btn">
+                                                        View Details <i class="fa fa-arrow-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-3 col-sm-6 text-center servicecard-col">
+                                        <div class="service-card1">
+                                            <img src="~/userasset/images/Locations/maldivas.jpg" alt="" class="sc-image" />
+                                            <div class="sc-overly">
+                                                <div class="service-card-content">
+                                                    <h2 class="sc-content-title">Maldives</h2>
+                                                    <hr class="sc-content-hr">
+                                                    <button id="myBtn13"
+                                                            onclick="showpop('The Maldives is home to the best beaches in the world; unrivalled luxury, striking white-sand beaches and an amazing underwater world make Maldives an obvious choice for an exotic wedding. The islands are scattered across the equator in the middle of the Indian Ocean, fringed in palm vegetation, turquoise lagoon, clear warm waters and coral reefs teeming with abundant varieties of marine flora and fauna, continue to fascinate all the visitors around the world.')"
+                                                            class="sc-content-btn">
+                                                        View Details <i class="fa fa-arrow-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-3 col-sm-6 text-center servicecard-col ">
+                                        <div class="service-card1">
+                                            <img src="~/userasset/images/Locations/Sri Lanka.jpg" alt="" class="sc-image" />
+                                            <div class="sc-overly">
+                                                <div class="service-card-content">
+                                                    <h2 class="sc-content-title">Sri Lanka</h2>
+                                                    <hr class="sc-content-hr">
+                                                    <button id="myBtn14"
+                                                            onclick="showpop('A paradise island of glorious beaches, palm framed blue skies and tropical warmth, a little Garden of Eden to celebrate the most precious day of all-in Sri Lanka, weddings are beautiful dreams that always come true. And if you are looking for that perfect place and the perfect way to start your life together, whisk away to prestigious beachside properties.')"
+                                                            class="sc-content-btn">
+                                                        View Details <i class="fa fa-arrow-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-3 col-sm-6 text-center servicecard-col ">
+                                        <div class="service-card1">
+                                            <img src="~/userasset/images/Locations/bali.jpg" alt="" class="sc-image" />
+                                            <div class="sc-overly">
+                                                <div class="service-card-content">
+                                                    <h2 class="sc-content-title">Bali</h2>
+                                                    <hr class="sc-content-hr">
+                                                    <button id="myBtn15"
+                                                            onclick="showpop('Exchanging your vows while the sun sets behind an ancient Balinese temple or overlooking the horizon of blue waters of a tranquil sea- as far as magical moments in paradise goes, it does not get much better than hosting your wedding in Bali, With great cuisine, hospitality and sightseeing options, Bali has everything a destination wedding defines.')"
+                                                            class="sc-content-btn">
+                                                        View Details <i class="fa fa-arrow-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Destinaton Wedding Start End -->
+
+
+    </div>
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-back">
+                <span class="close"
+                      onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+                <div class="blog-title text-center">
+
+                </div>
+                <div class="blog-text">
+                    <div class="blog-para">
+                        <p id="poptext">
+                            Exchanging your vows while the sun sets behind an ancient Balinese
+                            temple or overlooking the horizon of blue waters of a tranquil sea- as far as
+                            magical moments in paradise goes, it doesn't get much better than hosting your
+                            wedding in Bali, With great cuisine, hospitality and sightseeing options, Bali has
+                            everything a destination wedding defines.
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-img">
+                    <img src="~/userasset/images_02/background/modal-img.png" alt="">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+
+    function showpop(ptext) {
+        var modal = document.getElementById("myModal");
+        document.getElementById("poptext").innerHTML = ptext;
+        modal.style.display = "block";
+    }
+
+
+
+
+</script>

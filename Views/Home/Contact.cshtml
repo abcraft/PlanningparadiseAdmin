@@ -1,0 +1,92 @@
+﻿@{
+    ViewData["Title"] = "Contact - The Planning Paradise";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<!-- subheader -->
+<section id="subheader" class="subheader_02 dark no-top no-bottom" data-stellar-background-ratio=".2">
+    <div class="wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center fadeScroll relative" data-scroll-speed="2">
+                    <h2 data-scroll-speed="8">Contact</h2>
+                    <div class="small-border"></div>
+                    <div class="spacer-double"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- subheader close -->
+<!-- content begin -->
+<div id="content" class="no-top no-bottom">
+
+    <!-- section begin -->
+    <section id="section-contact">
+
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-8">
+                    <div class="row">
+                        <form name="contactForm" id='contact_form' method="post" action='email.php'>
+                            <div class="col-md-6">
+                                <div class="field-set">
+                                    <input type='text' name='name' id='name' class="form-control"
+                                           placeholder="Your Name">
+                                    <div class="line-fx"></div>
+                                </div>
+
+                                <div class="field-set">
+                                    <input type='text' name='email' id='email' class="form-control"
+                                           placeholder="Your Email">
+                                    <div class="line-fx"></div>
+                                </div>
+
+                                <div class="field-set">
+                                    <input type='text' name='phone' id='phone' class="form-control"
+                                           placeholder="Your Phone">
+                                    <div class="line-fx"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="field-set">
+                                    <textarea name='message' id='message' class="form-control"
+                                              placeholder="Your Message"></textarea>
+                                    <div class="line-fx"></div>
+                                </div>
+                            </div>
+
+                            <div class="spacer-single"></div>
+
+                            <div class="col-md-12">
+                                <div id='submit'>
+                                    <input type='submit' id='send_message' value='Submit Form'
+                                           class="btn btn-custom">
+                                </div>
+                                <div id='mail_success' class='success'>
+                                    Your message has been sent successfully.
+                                </div>
+                                <div id='mail_fail' class='error'>
+                                    Sorry, error occured this time sending your
+                                    message.
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-md-offset-1">
+                    <h6 class="id-color ">Address :</h6>
+                    <h4>Navi Mumbai,<br> Maharashtra, India</h4>
+                    <h6 class="id-color pt10">Call Us :</h6>
+                    <h4>+91 7078787837</h4>
+                    <h6 class="id-color pt10">Email Us :</h6>
+                    <h4>theplanningparadiseofficial@gmail.com</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
