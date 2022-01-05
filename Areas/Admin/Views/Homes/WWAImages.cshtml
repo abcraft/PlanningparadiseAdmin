@@ -4,6 +4,16 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+<style>
+    .WWA_Img_group {
+        margin-top:10px;
+    }
+    .WWA_Imgs {
+        width: 450px;
+        height: 250px;
+    }
+</style>
+
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -27,18 +37,18 @@
                 <!-- general form elements -->
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Who are images Edith<</h3>
+                        <h3 class="card-title">Who are images Edith</h3>
                     </div>
                     <form asp-action="SaveImages" enctype="multipart/form-data">
                         <div class="card-body">
                             <div class="row">
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+                                
 
                                 <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label asp-for="WWA_Img1" class="control-label"></label>
-                                        <img class="img-fluid" src="~/Images/wwaImages/@Model.WWA_Img1" />
+                                    <div class="form-group WWA_Img_group">
+                                        <label asp-for="WWA_Img1" class="control-label">Who We Are 1</label>
+                                        <img class="img-fluid WWA_Imgs" src="~/Images/wwaImages/@Model.WWA_Img1" />
                                         <input type="file" asp-for="WWA_Img1" class="form-control" />
                                         <span asp-validation-for="WWA_Img1" class="text-danger"></span>
                                     </div>
@@ -46,25 +56,25 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label asp-for="WWA_Img2" class="control-label"></label>
-                                        <img class="img-fluid" src="~/Images/wwaImages/@Model.WWA_Img2" />
+                                    <div class="form-group WWA_Img_group">
+                                        <label asp-for="WWA_Img2" class="control-label">Who We Are 2</label>
+                                        <img class="img-fluid WWA_Imgs" src="~/Images/wwaImages/@Model.WWA_Img2" />
                                         <input type="file" asp-for="WWA_Img2" class="form-control" />
                                         <span asp-validation-for="WWA_Img2" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label asp-for="WWA_Img3" class="control-label"></label>
-                                        <img class="img-fluid" src="~/Images/wwaImages/@Model.WWA_Img3" />
+                                    <div class="form-group WWA_Img_group">
+                                        <label asp-for="WWA_Img3" class="control-label">Who We Are 3</label>
+                                        <img class="img-fluid WWA_Imgs" src="~/Images/wwaImages/@Model.WWA_Img3" />
                                         <input type="file" asp-for="WWA_Img3" class="form-control" />
                                         <span asp-validation-for="WWA_Img3" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label asp-for="WWA_Img4" class="control-label"></label>
-                                        <img class="img-fluid" src="~/Images/wwaImages/@Model.WWA_Img4" />
+                                    <div class="form-group WWA_Img_group">
+                                        <label asp-for="WWA_Img4" class="control-label">Who We Are 4</label>
+                                        <img class="img-fluid WWA_Imgs" src="~/Images/wwaImages/@Model.WWA_Img4" />
                                         <input type="file" asp-for="WWA_Img4" class="form-control" />
                                         <span asp-validation-for="WWA_Img4" class="text-danger"></span>
                                     </div>
@@ -72,25 +82,25 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label asp-for="WWA_Img5" class="control-label"></label>
-                                        <img class="img-fluid" src="~/Images/wwaImages/@Model.WWA_Img4" />
+                                    <div class="form-group WWA_Img_group">
+                                        <label asp-for="WWA_Img5" class="control-label">Who We Are 5</label>
+                                        <img class="img-fluid WWA_Imgs" src="~/Images/wwaImages/@Model.WWA_Img4" />
                                         <input type="file" asp-for="WWA_Img5" class="form-control" />
                                         <span asp-validation-for="WWA_Img5" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label asp-for="WWA_Img6" class="control-label"></label>
-                                        <img class="img-fluid" src="~/Images/wwaImages/@Model.WWA_Img6" />
+                                    <div class="form-group WWA_Img_group">
+                                        <label asp-for="WWA_Img6" class="control-label">Who We Are 6</label>
+                                        <img class="img-fluid WWA_Imgs" src="~/Images/wwaImages/@Model.WWA_Img6" />
                                         <input type="file" asp-for="WWA_Img6" class="form-control" />
                                         <span asp-validation-for="WWA_Img6" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label asp-for="WWA_Img7" class="control-label"></label>
-                                        <img class="img-fluid" src="~/Images/wwaImages/@Model.WWA_Img7" />
+                                    <div class="form-group WWA_Img_group">
+                                        <label asp-for="WWA_Img7" class="control-label">Who We Are 7</label>
+                                        <img class="img-fluid WWA_Imgs" src="~/Images/wwaImages/@Model.WWA_Img7" />
                                         <input type="file" asp-for="WWA_Img7" class="form-control" />
                                         <span asp-validation-for="WWA_Img7" class="text-danger"></span>
                                     </div>
@@ -98,17 +108,17 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label asp-for="WWA_Img8" class="control-label"></label>
-                                        <img class="img-fluid" src="~/Images/wwaImages/@Model.WWA_Img8" />
+                                    <div class="form-group WWA_Img_group">
+                                        <label asp-for="WWA_Img8" class="control-label">Who We Are 8</label>
+                                        <img class="img-fluid WWA_Imgs" src="~/Images/wwaImages/@Model.WWA_Img8" />
                                         <input type="file" asp-for="WWA_Img8" class="form-control" />
                                         <span asp-validation-for="WWA_Img8" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label asp-for="WWA_Img9" class="control-label"></label>
-                                        <img class="img-fluid" src="~/Images/wwaImages/@Model.WWA_Img9" />
+                                    <div class="form-group WWA_Img_group">
+                                        <label asp-for="WWA_Img9" class="control-label">Who We Are 8</label>
+                                        <img class="img-fluid WWA_Imgs" src="~/Images/wwaImages/@Model.WWA_Img9" />
                                         <input type="file" asp-for="WWA_Img9" class="form-control" />
                                         <span asp-validation-for="WWA_Img9" class="text-danger"></span>
                                     </div>

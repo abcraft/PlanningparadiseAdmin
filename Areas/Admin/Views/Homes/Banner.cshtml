@@ -4,6 +4,14 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+<style>
+    .banner_img_group img{
+        width:450px;
+        height:300px;
+        object-fit:cover;
+    }
+</style>
+
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -36,7 +44,7 @@
                                 <input type="hidden" asp-for="ID" />
                                 <input type="hidden" asp-for="ServiceBanner_Img" />
                                 <div class="col-md-4">
-                                    <div class="form-group">
+                                    <div class="form-group banner_img_group">
                                         <label class="control-label">About US</label>
                                         <input type="text" asp-for="AboutBanner_Heading" class="form-control" />
                                         <img class="img-fluid" src="~/Images/Banner/@Model.AboutBanner_Img" />
@@ -48,7 +56,7 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <div class="form-group">
+                                    <div class="form-group banner_img_group">
                                         <label class="control-label">Services</label>
                                         <input type="text" asp-for="ServiceBanner_Heading" class="form-control" />
                                         <img class="img-fluid" src="~/Images/Banner/@Model.ServiceBanner_Img" />
@@ -56,7 +64,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group">
+                                    <div class="form-group banner_img_group">
                                         <label class="control-label">Destination</label>
                                         <input type="text" asp-for="DestinationBanner_Heading" class="form-control" />
                                         <img class="img-fluid" src="~/Images/Banner/@Model.DestinationBanner_Img" />
@@ -64,7 +72,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group">
+                                    <div class="form-group banner_img_group">
                                         <label class="control-label">Gallery</label>
                                         <input type="text" asp-for="GalleryBanner_Heading" class="form-control" />
                                         <img class="img-fluid" src="~/Images/Banner/@Model.GalleryBanner_Img" />
@@ -75,7 +83,7 @@
 
                                
                                 <div class="col-md-4">
-                                    <div class="form-group">
+                                    <div class="form-group banner_img_group">
                                         <label class="control-label">FAQ</label>
                                         <input type="text" asp-for="FaqBanner_Heading" class="form-control" />
                                         <img class="img-fluid" src="~/Images/Banner/@Model.FaqBanner_Img" />
@@ -83,7 +91,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group">
+                                    <div class="form-group banner_img_group">
                                         <label class="control-label">Blog</label>
                                         <input type="text" asp-for="BlogBanner_Heading" class="form-control" />
                                         <img class="img-fluid" src="~/Images/Banner/@Model.BlogBanner_Img" />
@@ -93,7 +101,7 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <div class="form-group">
+                                    <div class="form-group banner_img_group">
                                         <label class="control-label">Contact</label>
                                         <input type="text" asp-for="ContactBanner_Heading" class="form-control" />
                                         <img class="img-fluid" src="~/Images/Banner/@Model.ContactBanner_Img" />

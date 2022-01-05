@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PlanningParadiseAdmin.Data;
 using PlanningParadiseAdmin.Models;
+using PlanningParadiseAdmin.ViewModel;
 
 namespace PlanningParadiseAdmin.Areas.Admin.Controllers
 {
@@ -63,6 +64,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             {
                 _context.Add(whyChoosUs);
                 await _context.SaveChangesAsync();
+                TempData["message"] = "Saved";
                 return RedirectToAction(nameof(Index));
             }
             return View(whyChoosUs);
@@ -77,11 +79,17 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             }
 
             var whyChoosUs = await _context.WhyChoosUs.FindAsync(id);
+            WhyChooseUsVM wvm = new WhyChooseUsVM();
+            wvm.ID = whyChoosUs.ID;
+            wvm.WhyUS_Heading = whyChoosUs.WhyUS_Heading;
+            wvm.WhyUs_Text = whyChoosUs.WhyUs_Text;
+            wvm.IsActive = whyChoosUs.IsActive;
+
             if (whyChoosUs == null)
             {
                 return NotFound();
             }
-            return View(whyChoosUs);
+            return View(wvm);
         }
 
         // POST: Admin/WhyChoosUs/Edit/5
@@ -89,9 +97,9 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,WhyUS_Heading,WhyUs_Text,IsActive")] WhyChoosUs whyChoosUs)
+        public async Task<IActionResult> Edit(int id, WhyChooseUsVM wvm)
         {
-            if (id != whyChoosUs.ID)
+            if (id != wvm.ID)
             {
                 return NotFound();
             }
@@ -100,12 +108,18 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             {
                 try
                 {
-                    _context.Update(whyChoosUs);
+                    WhyChoosUs whyChoos = new WhyChoosUs();
+                    whyChoos.ID = wvm.ID;
+                    whyChoos.WhyUS_Heading = wvm.WhyUS_Heading;
+                    whyChoos.WhyUs_Text = wvm.WhyUs_Text;
+                    whyChoos.IsActive = wvm.IsActive;
+                    _context.Update(whyChoos);
+                    TempData["message"] = "Updated";
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!WhyChoosUsExists(whyChoosUs.ID))
+                    if (!WhyChoosUsExists(wvm.ID))
                     {
                         return NotFound();
                     }
@@ -116,7 +130,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(whyChoosUs);
+            return View(wvm);
         }
 
         // GET: Admin/WhyChoosUs/Delete/5
@@ -145,6 +159,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             var whyChoosUs = await _context.WhyChoosUs.FindAsync(id);
             _context.WhyChoosUs.Remove(whyChoosUs);
             await _context.SaveChangesAsync();
+            TempData["message"] = "Delete";
             return RedirectToAction(nameof(Index));
         }
 

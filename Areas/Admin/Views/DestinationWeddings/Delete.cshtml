@@ -5,54 +5,74 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Delete</h1>
-
-<h3>Are you sure you want to delete this?</h3>
-
-
-<div>
-    <h4>DestinationWedding</h4>
-    <hr />
-    <section class="content">
-        <div class="container-fluid">
-            <dl class="row">
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Destination_Img)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Destination_Img)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Destination_Heading)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Destination_Heading)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.IsNational)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.IsNational)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.IsInterNational)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.IsInterNational)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.IsActive)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.IsActive)
-                </dd>
-            </dl>
-
-            <form asp-action="Delete">
-                <input type="hidden" asp-for="ID" />
-                <input type="submit" value="Delete" class="btn btn-danger" /> |
-                <a asp-action="Index">Back to List</a>
-            </form>
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Delete</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Blogs</a></li>
+                    <li class="breadcrumb-item active">Delete</li>
+                </ol>
+            </div>
         </div>
-    </section>
-</div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Blogs Content</h3>
+                    </div>
+                    <div class="card-body">
+
+                        <dl class="row">
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.Destination_Img)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.Destination_Img)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.Destination_Heading)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.Destination_Heading)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.IsNational)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.IsNational)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.IsInterNational)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.IsInterNational)
+                            </dd>
+                            <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.IsActive)
+                            </dt>
+                            <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.IsActive)
+                            </dd>
+                        </dl>
+
+                        <form asp-action="Delete">
+                            <input type="hidden" asp-for="ID" />
+                            <input type="submit" value="Delete" class="btn btn-danger" /> |
+                            <a asp-action="Index">Back to List</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

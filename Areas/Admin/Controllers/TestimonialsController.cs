@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PlanningParadiseAdmin.Data;
 using PlanningParadiseAdmin.Models;
+using PlanningParadiseAdmin.ViewModel;
 
 namespace PlanningParadiseAdmin.Areas.Admin.Controllers
 {
@@ -63,6 +64,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             {
                 _context.Add(testimonial);
                 await _context.SaveChangesAsync();
+                TempData["message"] = "Saved";
                 return RedirectToAction(nameof(Index));
             }
             return View(testimonial);
@@ -77,11 +79,18 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             }
 
             var testimonial = await _context.Testimonials.FindAsync(id);
+            TestimonialVM tvm = new TestimonialVM();
+            tvm.ID = testimonial.ID;
+            tvm.Testimonial_Name = testimonial.Testimonial_Name;
+            tvm.Testimonial_Text = testimonial.Testimonial_Text;
+            tvm.Testimonial_Order = testimonial.Testimonial_Order;
+            tvm.IsAvtive = testimonial.IsAvtive;
+
             if (testimonial == null)
             {
                 return NotFound();
             }
-            return View(testimonial);
+            return View(tvm);
         }
 
         // POST: Admin/Testimonials/Edit/5
@@ -89,9 +98,9 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Testimonial_Img,Testimonial_Name,Testimonial_Text,Testimonial_Order,IsAvtive")] Testimonial testimonial)
+        public async Task<IActionResult> Edit(int id, TestimonialVM tvm)
         {
-            if (id != testimonial.ID)
+            if (id != tvm.ID)
             {
                 return NotFound();
             }
@@ -100,12 +109,20 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             {
                 try
                 {
+                    Testimonial testimonial = new Testimonial();
+                    testimonial.ID = tvm.ID;
+                    testimonial.Testimonial_Name = tvm.Testimonial_Name;
+                    testimonial.Testimonial_Text = tvm.Testimonial_Text;
+                    testimonial.Testimonial_Order = tvm.Testimonial_Order;
+                    testimonial.IsAvtive = tvm.IsAvtive;
                     _context.Update(testimonial);
+                    TempData["message"] = "Updated";
                     await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TestimonialExists(testimonial.ID))
+                    if (!TestimonialExists(tvm.ID))
                     {
                         return NotFound();
                     }
@@ -116,7 +133,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(testimonial);
+            return View();
         }
 
         // GET: Admin/Testimonials/Delete/5
@@ -145,6 +162,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             var testimonial = await _context.Testimonials.FindAsync(id);
             _context.Testimonials.Remove(testimonial);
             await _context.SaveChangesAsync();
+            TempData["message"] = "Delete";
             return RedirectToAction(nameof(Index));
         }
 
