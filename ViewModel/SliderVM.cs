@@ -9,6 +9,7 @@ namespace PlanningParadiseAdmin.ViewModel
     {
         public int ID { get; set; }
         public string Slider_Img { get; set; }
+        public string ExistingSlider_Img { get; set; }
         public string Slider_Heading { get; set; }
         public string Slider_SubHead { get; set; }
         public string Slider_Order { get; set; }

@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PlanningParadiseAdmin.Data;
 using PlanningParadiseAdmin.Models;
+using PlanningParadiseAdmin.ViewModel;
+
 
 namespace PlanningParadiseAdmin.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     public class SlidersController : Controller
     {
@@ -91,6 +95,13 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             }
 
             var slider = await _context.Sliders.FindAsync(id);
+            SliderVM svm = new SliderVM();
+            svm.ID = slider.ID;
+            svm.Slider_Img = slider.Slider_Img;
+            svm.ExistingSlider_Img = slider.Slider_Img;
+            svm.Slider_SubHead = slider.Slider_SubHead;
+            svm.Slider_Order = slider.Slider_Order;
+
             if (slider == null)
             {
                 return NotFound();
@@ -103,7 +114,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Slider_Img,Slider_Heading,Slider_SubHead,Slider_Order,IsActive")] Slider slider)
+        public async Task<IActionResult> Edit(int id, SliderVM slider)
         {
             if (id != slider.ID)
             {
@@ -114,8 +125,30 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             {
                 try
                 {
-                    _context.Update(slider);
+                    if (HttpContext.Request.Form.Files.Count() > 0)
+                    {
+                        var f = HttpContext.Request.Form.Files[0];
+                        string wwwRootPath = _hostEnvironment.WebRootPath;
+                        string fileName = Path.GetFileNameWithoutExtension(f.FileName);
+                        string extension = Path.GetExtension(f.FileName);
+                        fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                        slider.Slider_Img = fileName;
+                        string path = Path.Combine(wwwRootPath + "/Images/slider", fileName);
+                        FileStream fileStream1 = new FileStream(path, FileMode.Create);
+                        f.CopyTo(fileStream1);
+
+                    }
+                    SliderVM svm = new SliderVM();
+                    svm.ID = slider.ID;
+                    svm.Slider_Img = slider.Slider_Img;
+                    svm.ExistingSlider_Img = slider.Slider_Img;
+                    svm.Slider_SubHead = slider.Slider_SubHead;
+                    svm.Slider_Order = slider.Slider_Order;
+                    _context.Add(svm);
+
                     await _context.SaveChangesAsync();
+                    TempData["message"] = "Saved";
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -159,6 +192,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             var slider = await _context.Sliders.FindAsync(id);
             _context.Sliders.Remove(slider);
             await _context.SaveChangesAsync();
+            TempData["message"] = "Delete";
             return RedirectToAction(nameof(Index));
         }
 

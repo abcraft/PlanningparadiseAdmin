@@ -2,22 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PlanningParadiseAdmin.Data;
 using PlanningParadiseAdmin.Models;
+using PlanningParadiseAdmin.ViewModel;
+
 
 namespace PlanningParadiseAdmin.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     public class FAQsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public FAQsController(ApplicationDbContext context)
+        public FAQsController(ApplicationDbContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            this._hostEnvironment = hostEnvironment;
         }
 
         // GET: Admin/FAQs
@@ -61,6 +68,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             {
                 _context.Add(fAQ);
                 await _context.SaveChangesAsync();
+                TempData["message"] = "Saved";
                 return RedirectToAction(nameof(Index));
             }
             return View(fAQ);
@@ -75,11 +83,16 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             }
 
             var fAQ = await _context.FAQ.FindAsync(id);
+            FaqVM fvm = new FaqVM();
+            fvm.ID = fAQ.ID;
+            fvm.Faq_Heading = fAQ.Faq_Heading;
+            fvm.Faq_Text = fAQ.Faq_Text;
+
             if (fAQ == null)
             {
                 return NotFound();
             }
-            return View(fAQ);
+            return View(fvm);
         }
 
         // POST: Admin/FAQs/Edit/5
@@ -87,7 +100,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Faq_Heading,Faq_Text,IsActive")] FAQ fAQ)
+        public async Task<IActionResult> Edit(int id, FaqVM fAQ)
         {
             if (id != fAQ.ID)
             {
@@ -98,7 +111,13 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             {
                 try
                 {
-                    _context.Update(fAQ);
+                    FaqVM fvm = new FaqVM();
+                    fvm.ID = fAQ.ID;
+                    fvm.Faq_Heading = fAQ.Faq_Heading;
+                    fvm.Faq_Text = fAQ.Faq_Text;
+                    _context.Update(fvm);
+
+                    TempData["message"] = "Updated";
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -143,6 +162,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             var fAQ = await _context.FAQ.FindAsync(id);
             _context.FAQ.Remove(fAQ);
             await _context.SaveChangesAsync();
+            TempData["message"] = "Delete";
             return RedirectToAction(nameof(Index));
         }
 

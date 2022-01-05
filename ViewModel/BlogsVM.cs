@@ -9,6 +9,7 @@ namespace PlanningParadiseAdmin.ViewModel
     {
         public int ID { get; set; }
         public string Blog_Img { get; set; }
+        public string ExistingBlog_Img { get; set; }
         public string Blog_Heading { get; set; }
         public string BlogShort_Detail { get; set; }
         public string BlogLong_Detail { get; set; }

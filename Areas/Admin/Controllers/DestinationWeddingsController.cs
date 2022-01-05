@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PlanningParadiseAdmin.Data;
 using PlanningParadiseAdmin.Models;
+using PlanningParadiseAdmin.ViewModel;
 
 namespace PlanningParadiseAdmin.Areas.Admin.Controllers
 {
@@ -78,6 +79,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
 
                 _context.Add(destinationWedding);
                 await _context.SaveChangesAsync();
+                TempData["message"] = "Saved";
                 return RedirectToAction(nameof(Index));
             }
             return View(destinationWedding);
@@ -92,11 +94,17 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             }
 
             var destinationWedding = await _context.DestinationWedding.FindAsync(id);
+            DestinationWeddingVM dwvm = new DestinationWeddingVM();
+            dwvm.ID = destinationWedding.ID;
+            dwvm.Destination_Heading = destinationWedding.Destination_Heading;
+            dwvm.Destination_Img= destinationWedding.Destination_Img;
+            dwvm.ExistingDestination_Img = destinationWedding.Destination_Img;
+
             if (destinationWedding == null)
             {
                 return NotFound();
             }
-            return View(destinationWedding);
+            return View(dwvm);
         }
 
         // POST: Admin/DestinationWeddings/Edit/5
@@ -104,7 +112,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Destination_Img,Destination_Heading,IsNational,IsInterNational,IsActive")] DestinationWedding destinationWedding)
+        public async Task<IActionResult> Edit(int id, DestinationWeddingVM destinationWedding)
         {
             if (id != destinationWedding.ID)
             {
@@ -115,8 +123,35 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             {
                 try
                 {
-                    _context.Update(destinationWedding);
+
+                    string uniqueFileName = "";
+                    if (HttpContext.Request.Form.Files.Count() > 0)
+                    {
+                        var f = HttpContext.Request.Form.Files[0];
+                        string wwwRootPath = _hostEnvironment.WebRootPath;
+                        string fileName = Path.GetFileNameWithoutExtension(f.FileName);
+                        string extension = Path.GetExtension(f.FileName);
+                        fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                        uniqueFileName = fileName;
+                        string path = Path.Combine(wwwRootPath + "/Images/services", fileName);
+                        FileStream fileStream1 = new FileStream(path, FileMode.Create);
+                        f.CopyTo(fileStream1);
+
+                    }
+                    else
+                    {
+                        uniqueFileName = destinationWedding.ExistingDestination_Img;
+                    }
+                    DestinationWedding dwvm = new DestinationWedding();
+                    dwvm.ID = destinationWedding.ID;
+                    dwvm.Destination_Heading = destinationWedding.Destination_Heading;
+                    dwvm.Destination_Img = uniqueFileName;
+                    dwvm.IsActive = destinationWedding.IsActive;
+                    _context.Update(dwvm);
+
                     await _context.SaveChangesAsync();
+                    TempData["message"] = "Updated";
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -160,6 +195,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             var destinationWedding = await _context.DestinationWedding.FindAsync(id);
             _context.DestinationWedding.Remove(destinationWedding);
             await _context.SaveChangesAsync();
+            TempData["message"] = "Delete";
             return RedirectToAction(nameof(Index));
         }
 

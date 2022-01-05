@@ -1,4 +1,4 @@
-﻿@model PlanningParadiseAdmin.Models.Blog
+﻿@model PlanningParadiseAdmin.ViewModel.BlogsVM
 
 @{
     ViewData["Title"] = "Edit";
@@ -30,29 +30,26 @@
                     <div class="card-header">
                         <h3 class="card-title">Destination Wedding Details</h3>
                     </div>
-                    <form asp-action="Edit">
+                    <form asp-action="Edit" enctype="multipart/form-data">
                         <div class="card-body">
                             <div class="row">
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                 <input type="hidden" asp-for="ID" />
+                                <input type="hidden" asp-for="ExistingBlog_Img" />
                                 <div class="col-md-6">
-                                    
+
                                     <div class="form-group">
                                         <label asp-for="Blog_Heading" class="control-label"></label>
                                         <input asp-for="Blog_Heading" class="form-control" />
                                         <span asp-validation-for="Blog_Heading" class="text-danger"></span>
                                     </div>
+
+                                </div>
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label asp-for="BlogShort_Detail" class="control-label"></label>
                                         <textarea asp-for="BlogShort_Detail" class="form-control" rows="5"></textarea>
                                         <span asp-validation-for="BlogShort_Detail" class="text-danger"></span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label asp-for="Blog_Img" class="control-label"></label>
-                                        <input asp-for="Blog_Img" class="form-control" />
-                                        <span asp-validation-for="Blog_Img" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
                                         <label asp-for="BlogLong_Detail" class="control-label"></label>
@@ -61,17 +58,28 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="Blog_Img" class="control-label"></label>
+                                        <input asp-for="Blog_Img" type="file" class="form-control" />
+                                        <span asp-validation-for="Blog_Img" class="text-danger"></span>
+                                    </div>
                                     <div class="form-group form-check">
                                         <label class="form-check-label">
                                             <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
                                         </label>
                                     </div>
+
                                     <div class="form-group">
                                         <input type="submit" value="Save" class="btn btn-primary" />
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-8">
+                                        <img class="img-fluid" src="~/Images/blogs/@Model.Blog_Img" alt="Blog Image" />
+                                    </div>
+                                    
+                                </div>
                             </div>
-                        </div>
 
                     </form>
                 </div>
