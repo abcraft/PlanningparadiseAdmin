@@ -5,10 +5,10 @@
 }
 
 <style>
-    .banner_img_group img{
-        width:450px;
-        height:300px;
-        object-fit:cover;
+    .banner_img_group img {
+        width: 450px;
+        height: 300px;
+        object-fit: cover;
     }
 </style>
 
@@ -16,12 +16,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Banner</h1>
+                <h1>Index</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Banner</li>
+                    <li class="breadcrumb-item"><a href="#">Banner</a></li>
+                    <li class="breadcrumb-item active">Index</li>
                 </ol>
             </div>
         </div>
@@ -35,9 +35,9 @@
                 <!-- general form elements -->
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Who are images Edith</h3>
+                        <h3 class="card-title">Banner Details</h3>
                     </div>
-                    <form asp-action="Banner"  enctype="multipart/form-data" >
+                    <form asp-action="Banner" enctype="multipart/form-data">
                         <div class="card-body">
                             <div class="row">
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -81,7 +81,7 @@
 
                                 </div>
 
-                               
+
                                 <div class="col-md-4">
                                     <div class="form-group banner_img_group">
                                         <label class="control-label">FAQ</label>
@@ -108,11 +108,10 @@
                                         <input type="file" asp-for="ContactBanner_Img" class="form-control" />
                                     </div>
                                 </div>
-
-
-
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <input type="submit" value="Create" class="btn btn-primary" />
+                                    <input type="submit" value="Create" class="btn btn-primary mt-4" />
                                 </div>
                             </div>
                         </div>
@@ -124,3 +123,39 @@
         </div>
     </div>
 </section>
+
+<script src="~/plugins/jquery/jquery.min.js"></script>
+
+
+@if ((string)TempData["message"] != "")
+{
+
+    <script type="text/javascript">
+        debugger;
+        var msgtype = '@TempData["message"]';
+    $(function () {
+    const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+    });
+
+
+        if (msgtype == "Saved") {
+            toastr.success('Saved Successfully')
+        }
+        if (msgtype == "Updated") {
+            toastr.success('Updated Successfully')
+        }
+        if (msgtype == "Delete") {
+            toastr.success('Deleted Successfully')
+        }
+        if (msgtype == "All already Exists") {
+            toastr.error('Product Name is Already Exist')
+        }
+    });
+
+        console.log(msgtype);
+    </script>
+}

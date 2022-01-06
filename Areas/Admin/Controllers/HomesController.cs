@@ -229,6 +229,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
                 try
                 {
                     _context.Update(home);
+                    TempData["message"] = "Updated";
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -378,6 +379,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
 
             _context.Entry(b1).State = EntityState.Modified;
             await _context.SaveChangesAsync();
+            TempData["message"] = "Updated";
             return View(banner);
         }
 

@@ -4,6 +4,12 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+<style>
+    .dataTables_info {
+        display: none;
+    }
+</style>
+
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -29,7 +35,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <table class="table">
+                    <table id="data_table1" class="table">
                         <thead>
                             <tr>
                                 <th>
@@ -78,6 +84,10 @@
                             }
                         </tbody>
                     </table>
+                    <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+                        <ul class="pagination">
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -85,7 +95,30 @@
 </section>
 
 <script src="~/plugins/jquery/jquery.min.js"></script>
-
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables -->
+<script src="../../plugins/datatables/jquery.dataTables.js"></script>
+<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+<!-- page script -->
+<script>
+    $(function () {
+        $('#data_table1').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "lengthMenu": [5, 10, 15, 20, 25],
+            /*"lengthChange": false,*/
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+        });
+    });
+</script>
 
 @if ((string)TempData["message"] != "")
 {

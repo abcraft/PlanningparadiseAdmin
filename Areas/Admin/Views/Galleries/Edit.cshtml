@@ -31,30 +31,37 @@
                         <h3 class="card-title">Blog Details</h3>
                     </div>
 
-                    <form asp-action="Edit">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <input type="hidden" asp-for="ID" />
-                        <input type="hidden" asp-for="ExistingGallery_Img" />
-                        <div class="form-group">
-                            <label asp-for="Gallery_Img" class="control-label"></label>
-                            <input asp-for="Gallery_Img" type="file" class="form-control" />
-                            <span asp-validation-for="Gallery_Img" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Gallery_Video" class="control-label"></label>
-                            <input asp-for="Gallery_Video" class="form-control" />
-                            <span asp-validation-for="Gallery_Video" class="text-danger"></span>
-                        </div>
-                        <div class="form-group form-check">
-                            <label class="form-check-label">
-                                <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="Save" class="btn btn-primary" />
-                        </div>
-                        <div class="col-md-6">
-                            <img class="img-fluid" src="~/Images/services/@Model.Gallery_Img" alt="Blog Image" />
+                    <form asp-action="Edit" enctype="multipart/form-data">
+                        <div class="card-body">
+                            <div class="row">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input type="hidden" asp-for="ID" />
+                                <input type="hidden" asp-for="ExistingGallery_Img" />
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="Gallery_Img" class="control-label"></label>
+                                        <input asp-for="Gallery_Img" type="file" class="form-control" />
+                                        <span asp-validation-for="Gallery_Img" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Gallery_Video" class="control-label"></label>
+                                        <input asp-for="Gallery_Video" class="form-control" />
+                                        <span asp-validation-for="Gallery_Video" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" value="Save" class="btn btn-primary" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <img class="img-fluid" src="~/Images/gallery/@Model.Gallery_Img" style="margin-left:25px" width="300" alt="Blog Image" />
+                                </div>
+                                
+                            </div>
                         </div>
                     </form>
                 </div>

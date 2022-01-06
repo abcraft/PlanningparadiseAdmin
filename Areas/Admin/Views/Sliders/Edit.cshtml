@@ -40,7 +40,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label asp-for="Slider_Img" class="control-label"></label>
-                                        <input asp-for="Slider_Img" class="form-control" />
+                                        <input asp-for="Slider_Img" type="file" class="form-control" />
                                         <span asp-validation-for="Slider_Img" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
@@ -63,9 +63,7 @@
                                             <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
                                         </label>
                                     </div>
-                                    <div class="col-md-6">
-                                        <img class="img-fluid" src="~/Images/services/@Model.Slider_Img" alt="Blog Image" />
-                                    </div>
+                                    
                                     <div class="form-group">
                                         <input type="submit" value="Save" class="btn btn-primary" />
                                     </div>
@@ -73,8 +71,12 @@
                                         <a asp-action="Index">Back to List</a>
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-6">
+                                        <img class="img-fluid" src="~/Images/slider/@Model.Slider_Img" alt="Slider Image" />
+                                    </div>
+                                </div>
                             </div>
-                        </div>
                     </form>
                 </div>
             </div>
