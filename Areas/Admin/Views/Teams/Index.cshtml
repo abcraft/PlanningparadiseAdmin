@@ -65,7 +65,7 @@
                                         @Html.DisplayFor(modelItem => item.Member_Text)
                                     </td>
                                     <td>
-                                        <img class="img-fluid" src="~/Images/team/@item.Member_Img" width="300" alt="Blog Image" />
+                                        <img class="img-fluid" src="~/Images/team/@item.Member_Img" width="300" height="300" alt="Teams Image" />
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.IsAcctive)
@@ -84,6 +84,8 @@
         </div>
     </div>
 </section>
+
+<script src="~/plugins/jquery/jquery.min.js"></script>
 
 @if ((string)TempData["message"] != "")
 {

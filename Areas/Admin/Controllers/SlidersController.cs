@@ -81,6 +81,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
                 }
                 _context.Add(slider);
                 await _context.SaveChangesAsync();
+                TempData["message"] = "Saved";
                 return RedirectToAction(nameof(Index));
             }
             return View(slider);
@@ -98,6 +99,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             SliderVM svm = new SliderVM();
             svm.ID = slider.ID;
             svm.Slider_Img = slider.Slider_Img;
+            svm.Slider_Heading = slider.Slider_Heading;
             svm.ExistingSlider_Img = slider.Slider_Img;
             svm.Slider_SubHead = slider.Slider_SubHead;
             svm.Slider_Order = slider.Slider_Order;
@@ -106,7 +108,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            return View(slider);
+            return View(svm);
         }
 
         // POST: Admin/Sliders/Edit/5
@@ -114,9 +116,9 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, SliderVM slider)
+        public async Task<IActionResult> Edit(int id, SliderVM svm)
         {
-            if (id != slider.ID)
+            if (id != svm.ID)
             {
                 return NotFound();
             }
@@ -125,6 +127,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             {
                 try
                 {
+                    string uniqueFileName = "";
                     if (HttpContext.Request.Form.Files.Count() > 0)
                     {
                         var f = HttpContext.Request.Form.Files[0];
@@ -132,27 +135,31 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
                         string fileName = Path.GetFileNameWithoutExtension(f.FileName);
                         string extension = Path.GetExtension(f.FileName);
                         fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                        slider.Slider_Img = fileName;
+                        uniqueFileName = fileName;
                         string path = Path.Combine(wwwRootPath + "/Images/slider", fileName);
                         FileStream fileStream1 = new FileStream(path, FileMode.Create);
                         f.CopyTo(fileStream1);
 
                     }
-                    SliderVM svm = new SliderVM();
-                    svm.ID = slider.ID;
-                    svm.Slider_Img = slider.Slider_Img;
-                    svm.ExistingSlider_Img = slider.Slider_Img;
-                    svm.Slider_SubHead = slider.Slider_SubHead;
-                    svm.Slider_Order = slider.Slider_Order;
-                    _context.Add(svm);
+                    else
+                    {
+                        uniqueFileName = svm.ExistingSlider_Img;
+                    }
+                    Slider slider = new Slider();
+                    slider.ID = svm.ID;
+                    slider.Slider_Img = uniqueFileName;
+                    slider.Slider_Heading = svm.Slider_Heading;
+                    slider.Slider_SubHead = svm.Slider_SubHead;
+                    slider.Slider_Order = svm.Slider_Order;
+                    _context.Update(slider);
 
                     await _context.SaveChangesAsync();
-                    TempData["message"] = "Saved";
+                    TempData["message"] = "Updated";
                     return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!SliderExists(slider.ID))
+                    if (!SliderExists(svm.ID))
                     {
                         return NotFound();
                     }
@@ -163,7 +170,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(slider);
+            return View(svm);
         }
 
         // GET: Admin/Sliders/Delete/5

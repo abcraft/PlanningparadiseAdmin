@@ -40,9 +40,11 @@
                                         <input asp-for="Service_Heading" class="form-control" />
                                         <span asp-validation-for="Service_Heading" class="text-danger"></span>
                                     </div>
-                                    <div class="form-group d-block">
+                                    <div class="form-group">
                                         <label asp-for="Servie_Text" class="control-label"></label>
-                                        <textarea rows="5" cols="50" asp-for="Servie_Text" class="control-label"></textarea>
+                                        <div col-12>
+                                            <textarea asp-for="Servie_Text" class="control-label" style="width:100%" rows="5"></textarea>
+                                        </div>
                                         <span asp-validation-for="Servie_Text" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
