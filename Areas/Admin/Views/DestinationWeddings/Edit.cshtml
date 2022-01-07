@@ -9,12 +9,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Blogs</h1>
+                <h1>Destinations Weeding</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Blogs</a></li>
-                    <li class="breadcrumb-item active">Edit Blog</li>
+                    <li class="breadcrumb-item"><a href="#">Destinations Weeding</a></li>
+                    <li class="breadcrumb-item active">Edit </li>
                 </ol>
             </div>
         </div>
@@ -28,7 +28,7 @@
                 <!-- general form elements -->
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Blog Details</h3>
+                        <h3 class="card-title">Destinations Weeding- Edit</h3>
                     </div>
                     <form asp-action="Edit" enctype="multipart/form-data">
                         <div class="card-body">
@@ -46,6 +46,11 @@
                                         <label asp-for="Destination_Heading" class="control-label"></label>
                                         <input asp-for="Destination_Heading" class="form-control" />
                                         <span asp-validation-for="Destination_Heading" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Destination_Text" class="control-label"></label>
+                                        <textarea rows="5" cols="5" asp-for="Destination_Text" class="form-control"></textarea>
+                                        <span asp-validation-for="Destination_Text" class="text-danger"></span>
                                     </div>
                                     <div class="form-group form-check">
                                         <label class="form-check-label check">

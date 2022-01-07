@@ -60,7 +60,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Destination_Img,Destination_Heading,IsNational,IsInterNational,IsActive")] DestinationWedding destinationWedding)
+        public async Task<IActionResult> Create([Bind("ID,Destination_Img,Destination_Heading,Destination_Text,IsNational,IsInterNational,IsActive")] DestinationWedding destinationWedding)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +97,12 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             DestinationWeddingVM dwvm = new DestinationWeddingVM();
             dwvm.ID = destinationWedding.ID;
             dwvm.Destination_Heading = destinationWedding.Destination_Heading;
+            dwvm.Destination_Text = destinationWedding.Destination_Text;
             dwvm.Destination_Img= destinationWedding.Destination_Img;
+            dwvm.IsNational= destinationWedding.IsNational;
+            dwvm.IsInterNational = destinationWedding.IsInterNational;
+            dwvm.IsActive= destinationWedding.IsActive;
+
             dwvm.ExistingDestination_Img = destinationWedding.Destination_Img;
 
             if (destinationWedding == null)
@@ -145,6 +150,9 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
                     DestinationWedding destinationWedding = new DestinationWedding();
                     destinationWedding.ID = dwvm.ID;
                     destinationWedding.Destination_Heading = dwvm.Destination_Heading;
+                    destinationWedding.Destination_Text = dwvm.Destination_Text;
+                    destinationWedding.IsInterNational = dwvm.IsInterNational;
+                    destinationWedding.IsNational= dwvm.IsNational;
                     destinationWedding.Destination_Img = uniqueFileName;
                     destinationWedding.IsActive = dwvm.IsActive;
                     _context.Update(destinationWedding);

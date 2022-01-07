@@ -56,35 +56,71 @@ namespace PlanningParadiseAdmin.Controllers
 
                 wWAImagesVMlist.Add(wwImgvm);
             }
+            List<TestimonialVM> testimonialVMlist = new List<TestimonialVM>();
+            var testimonials = (from c in _context.Testimonials select c).ToList();
+            foreach (var item in testimonials)
+            {
+                TestimonialVM testimonialVM = new TestimonialVM();
+                testimonialVM.ID = item.ID;
+                testimonialVM.Testimonial_Img = item.Testimonial_Img;
+                testimonialVM.Testimonial_Name = item.Testimonial_Name;
+                testimonialVM.Testimonial_Order = item.Testimonial_Order;
+                testimonialVM.Testimonial_Text = item.Testimonial_Text;
+                testimonialVM.IsAvtive = item.IsAvtive;
+               
+
+                testimonialVMlist.Add(testimonialVM);
+            }
 
             SessionHelper.SetObjectAsJson(HttpContext.Session, "Sliders", SliderVMlist);
             SessionHelper.SetObjectAsJson(HttpContext.Session, "WWAImages", wWAImagesVMlist);
-
-            return View(_context.Home.ToList());
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "Testimonials", testimonialVMlist);
+            var home =  _context.Home
+                .FirstOrDefault(m => m.Id == 1);
+            return View(home);
         }
         public IActionResult AboutUs()
         {
-            return View();
+            var AboutContent = _context.AboutUs
+                .FirstOrDefault(m => m.ID == 1);
+            var whychooseus = (from c in _context.WhyChoosUs select c).ToList();
+            var WhyChoosePointslist = (from c in _context.WhyChoosePoints select c).ToList();
+            var Teams = (from c in _context.Team select c).ToList();
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "Teams", Teams);
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "WhyChooseUsPoints", WhyChoosePointslist);
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "WhyChooseUs", whychooseus);
+
+            return View(AboutContent);
         }
         public IActionResult Services()
         {
-            return View();
+            var services = _context.Services.ToList();
+            return View(services);
         }
         public IActionResult DestinationWedding()
         {
+            var Nationalweedings = _context.DestinationWedding
+                .Where(m => m.IsNational == true).ToList();
+            var InterNationalweedings = _context.DestinationWedding
+                .Where(m => m.IsInterNational == true).ToList();
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "Nationalweedings", Nationalweedings);
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "InterNationalweedings", InterNationalweedings);
             return View();
         }
         public IActionResult Gallery()
         {
-            return View();
+            var galleries = _context.Gallery.ToList();
+            return View(galleries);
         }
         public IActionResult Blogs()
         {
-            return View();
+            var blogs = _context.Blogs.ToList();
+            return View(blogs);
         }
         public IActionResult FAQs()
         {
-            return View();
+            var faqs = _context.FAQ.ToList();
+            return View(faqs);
         }
         public IActionResult Contact()
         {

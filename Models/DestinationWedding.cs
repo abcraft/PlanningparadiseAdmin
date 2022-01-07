@@ -10,6 +10,7 @@ namespace PlanningParadiseAdmin.Models
         public int ID { get; set; }
         public string Destination_Img { get; set; }
         public string Destination_Heading { get; set; }
+        public string Destination_Text { get; set; }
         public bool IsNational { get; set; }
         public bool IsInterNational { get; set; }
         public bool IsActive { get; set; }

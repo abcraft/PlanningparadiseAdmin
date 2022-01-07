@@ -112,14 +112,14 @@
                                 <!-- mainmenu begin -->
                                 <nav>
                                     <ul id="mainmenu">
-                                        <li><a href="Index">Home</a></li>
-                                        <li><a href="AboutUs">About Us</a></li>
-                                        <li><a href="Services">Services</a></li>
-                                        <li><a href="DestinationWedding">Destination Wedding</a></li>
-                                        <li><a href="Gallery">Gallery</a></li>
-                                        <li><a href="FAQs">FAQ's</a></li>
-                                        <li><a href="Blogs">Blog</a></li>
-                                        <a href="Contact" class="btn-rsvp d-md-block d-none">Contact Us</a>
+                                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                                        <li><a asp-action="AboutUs" asp-controller="Home">About Us</a></li>
+                                        <li><a asp-controller="Home" asp-action="Services">Services</a></li>
+                                        <li><a asp-controller="Home" asp-action="DestinationWedding">Destination Wedding</a></li>
+                                        <li><a asp-controller="Home" asp-action="Gallery">Gallery</a></li>
+                                        <li><a asp-controller="Home" asp-action="FAQs">FAQ's</a></li>
+                                        <li><a asp-controller="Home" asp-action="Blogs">Blog</a></li>
+                                        <a asp-controller="Home" asp-action="Contact" class="btn-rsvp d-md-block d-none">Contact Us</a>
                                     </ul>
                                 </nav>
                                 <!-- mainmenu close -->

@@ -12,7 +12,7 @@ using PlanningParadiseAdmin.ViewModel;
 
 namespace PlanningParadiseAdmin.Areas.Admin.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Area("Admin")]
     public class WhyChoosUsController : Controller
     {
