@@ -21,9 +21,9 @@
     </div><!-- /.container-fluid -->
 </div>
 
-<p style="padding-left:20px">
+@*<p style="padding-left:20px">
     <a asp-action="Create" class="btn btn-primary">Create New</a>
-</p>
+</p>*@
 
 <section class="content">
     <div class="container-fluid">
@@ -59,9 +59,8 @@
                                         @Html.DisplayFor(modelItem => item.IsActive)
                                     </td>
                                     <td>
-                                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                                        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> 
+                                        
                                     </td>
                                 </tr>
                             }
