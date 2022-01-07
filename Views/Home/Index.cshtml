@@ -1,7 +1,13 @@
-﻿@{
+﻿@model PlanningParadiseAdmin.Models.Home
+@{
     ViewData["Title"] = "Home - The Planning Paradise";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
+@using Microsoft.AspNetCore.Identity;
+@using PlanningParadiseAdmin.Data;
+@using PlanningParadiseAdmin.ViewModel;
+@using Newtonsoft.Json;
+@using Microsoft.AspNetCore.Http;
 
 <div id="content" class="no-bottom no-top">
 
@@ -16,66 +22,41 @@
 
         <!-- <div class="center-y fadeScroll text-center relative" data-scroll-speed="4"> -->
         <!-- <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="spacer-double"></div>
-                    <h1 class='s2'>Bespoke Wedding Planning</h1>
-                    <h4 class='s3'>Wedding Planner</h4>
-                    <div class="spacer-double"></div>
-                </div>
-            </div>
-        </div> -->
-        <!-- </div> -->
-
-        <div id="custom-owl-slider" class="owl-slide" data-scroll-speed="2">
-            <div class="item">
-                <img src="~/userasset/images/slider/Slider-Pics-1.jpg" alt="">
-                <div class="fadeScroll" style="position: absolute; top: 55%; left: 10%;">
-                    <h1 class='s2'>UNRAVEL AN ENCHANTING WEDDING EXPERIENCE!</h1>
-                    <h4 class='s3'>Make Your Wedding Celebration Memorable With Us</h4>
-                    <div class="spacer-double"></div>
-                </div>
-                <div class="overlay"></div>
-            </div>
-            <div class="item">
-                <img src="~/userasset/images/slider/Slider-Pics-2.jpg" alt="" style="opacity: 9;">
-                <div class="fadeScroll" style="position: absolute; top: 55%; left: 10%;">
-                    <h1 class='s2'>AN EXCLUSIVE WEDDING EPISODE ENDURING YOUR PREREQUISITES!</h1>
-                    <h4 class='s3'>Make Your Wedding Celebration Memorable With Us</h4>
-                    <div class="spacer-double"></div>
-                </div>
-                <div class="overlay"></div>
-            </div>
-            <div class="item">
-                <img src="~/userasset/images/slider/Slider-Pics-3.jpg" alt="">
-                <div class="fadeScroll" style="position: absolute; top: 55%; left: 10%;">
-                    <h1 class='s2'>SPLENDID WEDDING CONCEPTS FOR <br />PRICELESS MEMORIES</h1>
-                    <h4 class='s3'>Make Your Wedding Celebration Memorable With Us</h4>
-                    <div class="spacer-double"></div>
-                </div>
-                <div class="overlay"></div>
-            </div>
-            <div class="item">
-                <img src="~/userasset/images/slider/Slider-Pics-4.jpg" alt="">
-                <div class="fadeScroll" style="position: absolute; top: 55%; left: 10%;">
-                    <h1 class='s2'>YOUR VISION, YOUR STYLE, YOUR DAY… <br> WE WILL MAKE IT HAPPEN! </h1>
-                    <h4 class='s3'>Make Your Wedding Celebration Memorable With Us</h4>
-                    <div class="spacer-double"></div>
-                </div>
-                <div class="overlay"></div>
-            </div>
-            <div class="item">
-                <img src="~/userasset/images/slider/Slider-Pics-5.jpg" alt="">
-                <div class="fadeScroll" style="position: absolute; top: 55%; left: 10%;">
-                    <h1 class='s2'>GRACING YOUR WEDDINGS WITH ELEGANCE </h1>
-                    <h4 class='s3'>Make Your Wedding Celebration Memorable With Us</h4>
-                    <div class="spacer-double"></div>
-                </div>
-                <div class="overlay"></div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="spacer-double"></div>
+                <h1 class='s2'>Bespoke Wedding Planning</h1>
+                <h4 class='s3'>Wedding Planner</h4>
+                <div class="spacer-double"></div>
             </div>
         </div>
+    </div> -->
+        <!-- </div> -->
+       
 
-    </section>
+        <div id="custom-owl-slider" class="owl-slide" data-scroll-speed="2">
+            @{
+                var Sliders = SessionHelper.GetObjectFromJson<IList<SliderVM>>(Context.Session, "Sliders");
+                if (Sliders != null)
+                {
+                    foreach (var item in Sliders.GroupBy(Obj => new { Obj.ID }).Distinct().ToList())
+                    {
+                    <div class="item">
+                        <img src="~/Images/slider/@item.FirstOrDefault().Slider_Img" alt="">
+                        <div class="fadeScroll" style="position: absolute; top: 55%; left: 10%;">
+                            <h1 class='s2'>@item.FirstOrDefault().Slider_Heading</h1>
+                            <h4 class='s3'>@item.FirstOrDefault().Slider_SubHead</h4>
+                            <div class="spacer-double"></div>
+                        </div>
+                        <div class="overlay"></div>
+                    </div>
+                    }
+                }
+                }
+                   
+                </div>
+
+            </section>
 </div>
 <!-- section close -->
 <!-- section begin -->
@@ -83,13 +64,10 @@
     <div class="container">
         <div class="row text-center">
             <div class="col-md-8 col-md-offset-2">
-                <h2 class="s1">Welcome</h2>
+                <h2 class="s1">@Model.Welcome_Heading</h2>
                 <div class="small-border"></div>
                 <p class="lead">
-                    Are you ready for blending your lives with love together?
-                    Our best wishes on this wonderful journey of togetherness to both the families!
-                    The Planning Paradise is more than elated to make this ever-important ceremony of yours to
-                    be the perfect one
+                    @Model.Welcome_Text
                 </p>
             </div>
 
@@ -108,16 +86,12 @@
           alt="img.jpg"
         /> -->
         <div class="text-div">
-            <h2 class="s1">Who We Are</h2>
+            <h2 class="s1">@Model.WWA_Heading</h2>
             <hr class="heading-hr">
             <p>
-                The Planning Paradise have created up to 300 enchanted weddings so far, each of them
-                marvelously unique and magical from the other. Every wedding story is unique and the
-                couple have treasured tremendous dream ideas about how they have decided to tie the
-                knot. Hence, our team ensures to seamlessly create An Outstanding Wedding Experience
-                that is as memorable and special as the couple themselves.
+                @Model.WWA_Text
             </p>
-            <a href="about.html" class="btn btn-custom">Read More</a>
+            <a asp-action="AboutUs" class="btn btn-custom">Read More</a>
         </div>
         <!-- <div class="hgallery-overlay">
           <div class="details">
@@ -130,170 +104,71 @@
           </div>
         </div> -->
     </div>
-    <div class="image-box">
-        <img src="~/userasset/images/gallery/home-gallery1.jpg" alt="img.jpg" />
-        <!-- <div class="overlay">
-          <div class="details">
-            <h3 class="title">
-              <a href="#">Your Title</a>
-            </h3>
-            <span class="category">
-              <a href="#">Category</a>
-            </span>
-          </div>
-        </div> -->
-    </div>
-    <div class="image-box">
-        <img src="~/userasset/images/gallery/home-gallery2.jpg" alt="img.jpg" />
-    </div>
-    <div class="image-box">
-        <img src="~/userasset/images/gallery/home-gallery3.jpg" alt="img.jpg" />
-    </div>
-    <div class="image-box">
-        <img src="~/userasset/images/gallery/home-gallery4.jpg" alt="img.jpg" />
-    </div>
-    <div class="image-box">
-        <img src="~/userasset/images/gallery/home-gallery5.jpg" alt="img.jpg" />
+    @{
+        var wwAImages = SessionHelper.GetObjectFromJson<IList<WWAImagesVM>>(Context.Session, "WWAImages");
+        if (wwAImages != null)
+        {
+            <div class="image-box">
+                <img src="~/Images/wwaImages/@wwAImages.FirstOrDefault().WWA_Img1" alt="img.jpg" />
 
-    </div>
-    <div class="image-box">
-        <img src="~/userasset/images/gallery/home-gallery6.jpg" alt="img.jpg" />
+            </div>
+            <div class="image-box">
+                <img src="~/Images/wwaImages/@wwAImages.FirstOrDefault().WWA_Img2" alt="img.jpg" />
+            </div>
+            <div class="image-box">
+                <img src="~/Images/wwaImages/@wwAImages.FirstOrDefault().WWA_Img3" alt="img.jpg" />
+            </div>
+            <div class="image-box">
+                <img src="~/Images/wwaImages/@wwAImages.FirstOrDefault().WWA_Img4" alt="img.jpg" />
+            </div>
+            <div class="image-box">
+                <img src="~/Images/wwaImages/@wwAImages.FirstOrDefault().WWA_Img5" alt="img.jpg" />
 
-    </div>
-    <div class="image-box">
-        <img src="~/userasset/images/gallery/home-gallery7.jpg" alt="img.jpg" />
+            </div>
+            <div class="image-box">
+                <img src="~/Images/wwaImages/@wwAImages.FirstOrDefault().WWA_Img6" alt="img.jpg" />
 
-    </div>
-    <div class="image-box">
-        <img src="~/userasset/images/gallery/g14.jpg" alt="img.jpg" />
+            </div>
+            <div class="image-box">
+                <img src="~/Images/wwaImages/@wwAImages.FirstOrDefault().WWA_Img7" alt="img.jpg" />
 
-    </div>
-    <div class="image-box">
-        <img src="~/userasset/images/gallery/g12.jpg" alt="img.jpg" />
+            </div>
+            <div class="image-box">
+                <img src="~/Images/wwaImages/@wwAImages.FirstOrDefault().WWA_Img8" alt="img.jpg" />
 
-    </div>
-</div>
+            </div>
+            <div class="image-box">
+                <img src="~/Images/wwaImages/@wwAImages.FirstOrDefault().WWA_Img9" alt="img.jpg" />
+
+            </div>
+        }
+        }
+        </div>
 <!-- Home Gallery End -->
 <!-- Testimonial  -->
 <section id="testimonial" class="testimonial owl-carousel text-center">
-    <div class="test-slide">
-        <div class="item">
-            <div class="testimonial4_slide">
+    @{
+        var testimonials = SessionHelper.GetObjectFromJson<IList<TestimonialVM>>(Context.Session, "Testimonials");
+        if (testimonials != null)
+        {
+            foreach (var item in testimonials.GroupBy(Obj => new { Obj.ID }).Distinct().ToList())
+            {
+                <div class="test-slide">
+                    <div class="item">
+                        <div class="testimonial4_slide">
 
-                <p style=" text-overflow: ellipsis;">
-                    I really love and I´m fan of The Planning Paradise work!
-                    They combine an exquisite artistic
-                    taste for every detail with all the practical skills and knowledge of how to handle all
-                    wedding aspects, so professional always! They are gifted wedding planner and deeply loves
-                    and enjoys what they do. I feel that must be what makes the big magic of her weddings. The
-                    Planning Paradise and their team work are just amazing!!!
-                </p>
-                <h4>PiyushKamtamkar</h4>
-            </div>
-        </div>
-    </div>
-    <div class="test-slide">
-        <div class="item">
-            <div class="testimonial4_slide">
-
-                <p>
-                    After going through about various planning agencies for the event, I made the decision to
-                    hire The Planning Paradise, and now I have no doubts that it was the best that I could have
-                    done. All the effort that they put in to make the event the best possible,especially the
-                    attention to detail is worth every penny you pay. They made the planning of the event much
-                    more fun and stress free.
-                    Thank you....!!!!!
-                </p>
-                <h4>Akshay Prasad</h4>
-            </div>
-        </div>
-    </div>
-    <div class="test-slide">
-        <div class="item">
-            <div class="testimonial4_slide">
-
-                <p>
-                    The planning paradise are truly amazing and best planning team that I could have asked for.
-                    The team really lit up the whole wedding decoration to another level and the management was
-                    awesome.
-                    We had multiple events stretched across two day and everything was managed on time and
-                    picture perfect🤩
-                    Inspite of the pandamic causing great challenge, it was all a grand wedding extravaganza.
-                    All thanks to The Planning Paradise.
-                    You guys showed great confidence and all your hard work paved way for our successful wedding
-                    event.
-                    Kudos!! To the team and keep up the good show 😊
-                </p>
-                <h4>Dhanesh shah</h4>
-            </div>
-        </div>
-    </div>
-    <div class="test-slide">
-        <div class="item">
-            <div class="testimonial4_slide">
-
-                <p>
-                    The Planning Paradise planned and managed my sister wedding around three months ago and their
-                    work was fantastic.
-                    From planning to presentation and execution, everything is just perfect.
-                    The decor, the management everything was on time and fabulous.
-                    Totally satisfied by their work and entire management.
-
-                    ❤️❤️❤️❤️❤️
-                </p>
-                <h4>Karan Bhandari</h4>
-            </div>
-        </div>
-    </div>
-    <div class="test-slide">
-        <div class="item">
-            <div class="testimonial4_slide">
-
-                <p>
-                    "Bhau tu tr mann Jinklas"
-                    You are an absolutely amazing wedding planner! You're professional, poised and gracious at
-                    all times. Thank you so much for being there for my friends from start to finish, being so
-                    patient with and putting up with all our questions and last-minute changes. Just a pleasure
-                    to be in one of your decently planned event.
-                    #memories #perfectionornothing.
-                </p>
-                <h4>Shreyas Pai</h4>
-            </div>
-        </div>
-    </div>
-    <div class="test-slide">
-        <div class="item">
-            <div class="testimonial4_slide">
-
-                <p>
-                    The Planning Paradise and their team truly are the best! They really are the dream team and
-                    we couldn’t be happier. They helped our magical weekend wedding dreams come true. They were
-                    always very patient, responsive, and are in the know with the most current and fabulous
-                    trends. We absolutely recommend them without hesitation! Thank you! Thank you! Thank you !
-                    Love from Kolhapur !
-                </p>
-                <h4>P R A N A V</h4>
-            </div>
-        </div>
-    </div>
-    <div class="test-slide">
-        <div class="item">
-            <div class="testimonial4_slide">
-
-                <p>
-                    Being the only son in my family a lot of responsibility was on my shoulder when my sister
-                    marriage ceremony was about to happen last March. Absolutely puzzled about how to arrange
-                    everything a friend of mine suggested me About The Planning Paradise Event Management for my
-                    sister's wedding ceremony planning. I must say it was due to The Planning Paradise Event
-                    Management, me and my family didn't have to worry about anything and we enjoyed the wedding
-                    planning absolutely with no worries. Thanks to The Planning Paradise Event Management
-                    Company for making the ceremony a dream come true for my family.”
-                </p>
-                <h4>mehul shaha</h4>
-            </div>
-        </div>
-    </div>
-</section>
+                            <p style=" text-overflow: ellipsis;">
+                                @item.FirstOrDefault().Testimonial_Text
+                            </p>
+                            <h4>@item.FirstOrDefault().Testimonial_Name</h4>
+                        </div>
+                    </div>
+                </div>
+                }
+            }
+        }
+                
+            </section>
 <!-- Testimonial End -->
 <!-- section begin -->
 <section class="call-to-action bg-color text-light pt40 pb30 bg-color">
@@ -312,18 +187,18 @@
 <script src="~/userasset/js/jquery.min.js"></script>
 <script type="text/Javascript">
 
-$(document).ready(function () {
-    $('#testimonial').owlCarousel({
-        items: 1,
-		singleItem: true,
-		navigation: false,
-		pagination: true,
-		autoPlay: true,
-        autoPlaySpeed: 1000,
-		mouseDrag: true,
-		touchDrag: true,
-    })
+    $(document).ready(function () {
+        $('#testimonial').owlCarousel({
+            items: 1,
+            singleItem: true,
+            navigation: false,
+            pagination: true,
+            autoPlay: true,
+            autoPlaySpeed: 1000,
+            mouseDrag: true,
+            touchDrag: true,
+        })
 
-})
+    })
 
 </script>

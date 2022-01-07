@@ -46,7 +46,7 @@ namespace PlanningParadiseAdmin.Data
         public virtual DbSet<FAQ> FAQ { get; set; }
         public virtual DbSet<Slider> Sliders { get; set; }
         public virtual DbSet<WWAImages> WWAImages { get; set; }
-        public DbSet<PlanningParadiseAdmin.ViewModel.AboutUsVM> AboutUsVM { get; set; }
+        public virtual DbSet<WhyChoosePoints> WhyChoosePoints { get; set; }
 
     }
 }

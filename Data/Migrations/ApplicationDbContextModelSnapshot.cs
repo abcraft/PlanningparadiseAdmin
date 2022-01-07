@@ -351,6 +351,9 @@ namespace PlanningParadiseAdmin.Data.Migrations
                     b.Property<string>("Destination_Img")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Destination_Text")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -599,34 +602,19 @@ namespace PlanningParadiseAdmin.Data.Migrations
                     b.ToTable("WhyChoosUs");
                 });
 
-            modelBuilder.Entity("PlanningParadiseAdmin.ViewModel.AboutUsVM", b =>
+            modelBuilder.Entity("PlanningParadiseAdmin.Models.WhyChoosePoints", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("About_Heading")
+                    b.Property<string>("PointText")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("About_Para1")
-                        .HasColumnType("nvarchar(max)");
+                    b.HasKey("Id");
 
-                    b.Property<string>("About_Para2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("About_Para3")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("About_Qoute")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("AboutUsVM");
+                    b.ToTable("WhyChoosePoints");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

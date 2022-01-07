@@ -99,8 +99,11 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
                     {
                         var path1 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Images\\wwaImages", wWA.WWA_Img1);
 
+                        FileStream s = new FileStream(path1, FileMode.Open);
                         if (System.IO.File.Exists(path1))
                         {
+                            s.Close();
+                            s.Dispose();
                             System.IO.File.Delete(path1);
                         }
                         wWA.WWA_Img1 = fileName;
@@ -108,9 +111,11 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
                     if (item.Name == "WWA_Img2")
                     {
                         var path1 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Images\\wwaImages", wWA.WWA_Img2);
-
+                        FileStream s = new FileStream(path1, FileMode.Open);
                         if (System.IO.File.Exists(path1))
                         {
+                            s.Close();
+                            s.Dispose();
                             System.IO.File.Delete(path1);
                         }
                         wWA.WWA_Img2 = fileName;
@@ -128,9 +133,11 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
                     if (item.Name == "WWA_Img4")
                     {
                         var path1 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Images\\wwaImages", wWA.WWA_Img4);
-
+                        FileStream s = new FileStream(path1, FileMode.Open);
                         if (System.IO.File.Exists(path1))
                         {
+                            s.Close();
+                            s.Dispose();
                             System.IO.File.Delete(path1);
                         }
                         wWA.WWA_Img4 = fileName;
@@ -138,9 +145,11 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
                     if (item.Name == "WWA_Img5")
                     {
                         var path1 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Images\\wwaImages", wWA.WWA_Img5);
-
+                        FileStream s = new FileStream(path1, FileMode.Open);
                         if (System.IO.File.Exists(path1))
                         {
+                            s.Close();
+                            s.Dispose();
                             System.IO.File.Delete(path1);
                         }
                         wWA.WWA_Img5 = fileName;
@@ -148,8 +157,11 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
                     if (item.Name == "WWA_Img6")
                     {
                         var path1 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Images\\wwaImages", wWA.WWA_Img6);
+                        FileStream s = new FileStream(path1, FileMode.Open);
                         if (System.IO.File.Exists(path1))
                         {
+                            s.Close();
+                            s.Dispose();
                             System.IO.File.Delete(path1);
                         }
                         wWA.WWA_Img6 = fileName;
@@ -157,8 +169,11 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
                     if (item.Name == "WWA_Img7")
                     {
                         var path1 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Images\\wwaImages", wWA.WWA_Img7);
+                        FileStream s = new FileStream(path1, FileMode.Open);
                         if (System.IO.File.Exists(path1))
                         {
+                            s.Close();
+                            s.Dispose();
                             System.IO.File.Delete(path1);
                         }
                         wWA.WWA_Img7 = fileName;
@@ -166,8 +181,11 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
                     if (item.Name == "WWA_Img8")
                     {
                         var path1 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Images\\wwaImages", wWA.WWA_Img8);
+                        FileStream s = new FileStream(path1, FileMode.Open);
                         if (System.IO.File.Exists(path1))
                         {
+                            s.Close();
+                            s.Dispose();
                             System.IO.File.Delete(path1);
                         }
                         wWA.WWA_Img8 = fileName;
@@ -175,8 +193,11 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
                     if (item.Name == "WWA_Img9")
                     {
                         var path1 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Images\\wwaImages", wWA.WWA_Img9);
+                        FileStream s = new FileStream(path1, FileMode.Open);
                         if (System.IO.File.Exists(path1))
                         {
+                            s.Close();
+                            s.Dispose();
                             System.IO.File.Delete(path1);
                         }
                         wWA.WWA_Img9 = fileName;

@@ -150,7 +150,7 @@
                                         <p>Banner</p>
                                     </a>
                                 </li>
-                                        
+
                                 <li class="nav-item">
                                     <a asp-area="Admin" asp-controller="Sliders"
                                        asp-action="Index" class="nav-link">
@@ -174,7 +174,7 @@
 
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a asp-controller="AboutUs"
+                                    <a asp-area="Admin" asp-controller="AboutUs"
                                        asp-action="Index" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>About Content</p>
@@ -185,6 +185,13 @@
                                        asp-action="Index" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Why Choose Us</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-area="Admin" asp-controller="WhyChoosePoints"
+                                       asp-action="Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Why ChoosUs Points</p>
                                     </a>
                                 </li>
 
@@ -201,7 +208,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a asp-controller="Services"
+                                    <a asp-area="Admin" asp-controller="Services"
                                        asp-action="Index" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Services</p>
@@ -221,10 +228,30 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a asp-controller="Teams"
+                                    <a asp-area="Admin" asp-controller="Teams"
                                        asp-action="Index" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Teams</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-cart-arrow-down"></i>
+                                <p>
+                                    Gallery
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a asp-area="Admin" asp-controller="Galleries"
+                                       asp-action="Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Gallery</p>
                                     </a>
                                 </li>
 
@@ -241,10 +268,30 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a asp-controller="Blogs"
+                                    <a asp-area="Admin" asp-controller="Blogs"
                                        asp-action="Index" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Blogs</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-cart-arrow-down"></i>
+                                <p>
+                                    FAQ's
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a asp-area="Admin" asp-controller="FAQs"
+                                       asp-action="Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>FAQ's</p>
                                     </a>
                                 </li>
 
@@ -261,7 +308,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a asp-controller="DestinationWeddings"
+                                    <a asp-area="Admin" asp-controller="DestinationWeddings"
                                        asp-action="Index" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>DestinationWeddings</p>

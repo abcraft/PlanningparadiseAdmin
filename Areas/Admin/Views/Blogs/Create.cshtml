@@ -4,7 +4,9 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
+<link rel="stylesheet" href="~/plugins/summernote/summernote-bs4.min.css">
+<link rel="stylesheet" href="~/plugins/simplemde/simplemde.min.css">
+<link rel="stylesheet" href="~/plugins/codemirror/codemirror.css">
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -41,11 +43,7 @@
                                         <input asp-for="Blog_Heading" class="form-control" />
                                         <span asp-validation-for="Blog_Heading" class="text-danger"></span>
                                     </div>
-                                    <div class="form-group">
-                                        <label asp-for="BlogShort_Detail" class="control-label"></label>
-                                        <textarea asp-for="BlogShort_Detail" class="form-control" rows="5"></textarea>
-                                        <span asp-validation-for="BlogShort_Detail" class="text-danger"></span>
-                                    </div>
+
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -53,12 +51,20 @@
                                         <input type="file" asp-for="Blog_Img" class="form-control" />
                                         <span asp-validation-for="Blog_Img" class="text-danger"></span>
                                     </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label asp-for="BlogShort_Detail" class="control-label"></label>
+                                        <textarea asp-for="BlogShort_Detail" class="form-control" rows="5"></textarea>
+                                        <span asp-validation-for="BlogShort_Detail" class="text-danger"></span>
+                                    </div>
                                     <div class="form-group">
                                         <label asp-for="BlogLong_Detail" class="control-label"></label>
                                         <textarea asp-for="BlogLong_Detail" class="form-control" rows="5"></textarea>
                                         <span asp-validation-for="BlogLong_Detail" class="text-danger"></span>
                                     </div>
                                 </div>
+
                                 <div class="col-md-6">
                                     <div class="form-group form-check">
                                         <label class="form-check-label">
@@ -86,3 +92,21 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+<script src="~/plugins/jquery/jquery.min.js"></script>
+<script src="~/plugins/summernote/summernote-bs4.min.js"></script>
+<script src="~/plugins/codemirror/codemirror.js"></script>
+<script src="~/plugins/codemirror/mode/css/css.js"></script>
+<script src="~/plugins/codemirror/mode/xml/xml.js"></script>
+<script src="~/plugins/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+<script>
+    $(function () {
+        // Summernote
+        $('#BlogLong_Detail').summernote()
+
+        // CodeMirror
+        CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+            mode: "htmlmixed",
+            theme: "monokai"
+        });
+    })
+</script>

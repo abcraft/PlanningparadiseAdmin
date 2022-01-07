@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<PlanningParadiseAdmin.Models.Blog>
+@{
     ViewData["Title"] = "Blogs - The Planning Paradise";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
@@ -67,11 +68,13 @@
     <div class="container">
         <div class="row">
             <div class="blog-list">
-                <div class="col-md-6">
+                @foreach (var item in Model)
+                {
+                  <div class="col-md-6">
                     <div class="post-content">
                         <div class="post-image">
                             <figure class="picframe img-rounded mb20">
-                                <img src="~/userasset/images/services/flowerblog.jpg" class="img-responsive img-rounded" alt="">
+                                <img src="~/Images/blogs/@item.Blog_Img" class="img-responsive img-rounded" alt="">
                             </figure>
                         </div>
 
@@ -82,19 +85,13 @@
                             </div> -->
 
                             <div class="post-text">
-                                <h3><a href="css/#">Flowering Season & Markets of India</a></h3>
+                                <h3><a href="css/#">@item.Blog_Heading</a></h3>
                                 <p>
-                                    Speaking in flowers has been the most enchanting way to get on the horn for
-                                    ages. Forevermore, flowers and weddings have been in a relationship of long
-                                    standing. In a country like India, most of the people accentuate on flower
-                                    decorations while planning out their weddings. Right from the wedding
-                                    bouquet of a bride, the floral downpour by bridesmaids, the boutonnieres of
-                                    the groom and groomsmen, to the blossoming aisles and reception tables;
-                                    flowers have an integral roleplay in our weddings.
+                                    @item.BlogShort_Detail
                                 </p>
 
                                 <div class="readmore-btn">
-                                    <button id="myBtn">Read More</button>
+                                    <button id="myBtn" onclick="showpop('@item.BlogLong_Detail')">Read More</button>
                                 </div>
                             </div>
 
@@ -102,379 +99,73 @@
                             <div class="clearfix"></div>
                         </div>
 
-                        <div id="myModal" class="modal">
-
-                            <!-- Modal content -->
-                            <div class="modal-content">
-                                <span class="close">&times;</span>
-                                <div class="blog-title text-center">
-                                    <h2>Flowering Season & Markets of India</h2>
-                                </div>
-                                <div class="blog-text">
-                                    <div class="blog-para">
-                                        <p>
-                                            Speaking in flowers has been the most enchanting way to get on the
-                                            horn for ages. Forevermore, flowers and weddings have been in a
-                                            relationship of long standing. In a country like India, most of the
-                                            people accentuate on flower decorations while planning out their
-                                            weddings. Right from the wedding bouquet of a bride, the floral
-                                            downpour by bridesmaids, the boutonnieres of the groom and
-                                            groomsmen, to the blossoming aisles and reception tables; flowers
-                                            have an integral roleplay in our weddings. However, now-a-days it’s
-                                            just substantially more! While giving a thought to the contemporary
-                                            floral-wedding elements, customized flower jewelry and hair
-                                            accessories are the cornerstones of a bridal apparel. The floral
-                                            cascades dripping with flowers are one of the legitimate beauties in
-                                            the recent wedding trends. Moreover, blooming backdrop for the bride
-                                            and groom is yet another embracing plug-in for a perfect fairly-tale
-                                            wedding album!
-                                        </p>
-                                        <p>
-                                            The October-February time frame that witness the winter season in
-                                            India is the most accessible time for different species of beautiful
-                                            blooming annuals. The seeds of winter flowering annuals are sown in
-                                            October-November that almost hibernate during the cold months of
-                                            December or January and start growing as soon as the spring sets in.
-                                            Hence, the winter weddings can have the advantage of these seasonal
-                                            flowers having a tremendous variety of colour, size and form in an
-                                            affordable budget. However, in order to incorporate a galore of
-                                            flowers in your wedding episode, sky isn’t the limit! It’s your
-                                            budget allocation, flowering seasons, and above all the
-                                            accessibility to the top flower markets of India.
-                                        </p>
-                                        <p>
-                                            <span>
-                                                Here is the list of the top-notch flower markets explored by
-                                                The
-                                                Planning Paradise just for you!
-                                            </span>
-                                        </p>
-                                    </div>
-                                    <div class="p-para">
-                                        <span>Krishna Rajendra (KR) Market, Bangalore –</span>
-                                        <p>
-                                            The Krishna Rajendra (KR) Market in Bangalore (also known as City
-                                            Market) undertakes most of the wholesale trade in traditional
-                                            flowers. Modern flowers are traded in Russel market. Jasmine,
-                                            Crossandra, Marigold, Chrysanthemums and Aster are the major flower
-                                            species traded here. However, insignificant quantities of Rose, both
-                                            in loose blooms or long stemmed and Gladiolus are also traded. This
-                                            market witnesses a seasonal arrival of flowers. Jasmine season in
-                                            the market is between August and January whereas Chrysanthemums
-                                            start arriving in July lasting up to October. However, due to
-                                            Dussehra the demand for Chrysanthemum, Marigold and Aster upturns
-                                            during October. Most of the trade takes place at predetermined
-                                            contract prices. The city service buses carry maximum flowers to the
-                                            city market from the villages and suburbs of Bangalore whereas long
-                                            distance flowers are transported by bus, truck or train.
-                                        </p>
-                                    </div>
-                                    <div class="p-para">
-                                        <span>Ghazipur Phool Mandi, Delhi – </span>
-                                        <p>
-                                            The Ghazipur flower market in Delhi is very vast, and it serves all
-                                            types of flower needs to wholesalers, retailers, and final
-                                            consumers. One can witness the true beauty of this market during
-                                            midnight at around 3 am to enjoy the colourful flowers and its aroma
-                                            to soothe your soul. The stalls are beautifully decorated with
-                                            exotic flowers, and the famous flower basket is sold here at
-                                            wholesale rates. One can easily find diverse species of flowers
-                                            here. Artificial flowers in the shades of yellows, reds, oranges and
-                                            whites are also available. The predominant flower species traded at
-                                            this market are: Lilies, Orchids, Gerberas, Roses, Marigold,
-                                            Anthuriums, Carnations, Tulips and Aster.
-                                        </p>
-                                    </div>
-                                    <div class="p-para">
-                                        <span>Dal Lake Flower Market, Srinagar –</span>
-                                        <p>
-                                            The top-selling flowers in India comes from this market that makes it
-                                            famous. The market comes alive at the crack of dawn when the sellers
-                                            gather in their canoes to sell fresh flowers. It’s a sheer visual
-                                            delight to witness the beauty of the breath-taking floating Flower
-                                            Market that offers an eye-soothing image of flowers.
-                                        </p>
-                                    </div>
-                                    <div class="p-para">
-                                        <span>Mallik Ghat, Howrah Bridge, Calcutta – </span>
-                                        <p>
-                                            Found near the Hooghly River, this market is just beneath the divine
-                                            Howrah Bridge. It offers exquisite roses and diverse blossoms;
-                                            however, nothing overpowers the beholder other than the orange and
-                                            yellow marigolds which satisfies the festive as well as the wedding
-                                            rituals requirement.
-                                        </p>
-                                    </div>
-                                    <div class="p-para">
-                                        <span>Dadar Phool Mandi, Mumbai –</span>
-                                        <p>
-                                            If you wish to witness a heaven on earth, then you should probably
-                                            visit this amazing flower market in Mumbai known as the Dadar Phool
-                                            Mandi. The time frame of 4 am to 9 am is just perfect to pay a visit
-                                            to this market. Undoubtedly the aroma of the magical flowers and its
-                                            beauty will make you smile wide. One can find a wide variety of
-                                            flowers here as there are more than 600 stalls here making it
-                                            marvellous and one of the big flower markets in India.
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <span>Devraja Market, Mysore –</span>
-                                        <p>
-                                            The Devraja Market is Mysore is massively spread across 3 acres of
-                                            land. This market has an ancient history associated with it that
-                                            dates back to the reign of Tipu Sulatan in the 18th century. It is
-                                            named after erstwhile Maharaja Dodda Devaraja Wodeyar. Apart from
-                                            fresh flowers the market also trades, fruits, vegetables, puja
-                                            materials, etc. It is one of the tourist sites of Mysore.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="post-content">
-                        <div class="post-image">
-                            <figure class="picframe img-rounded mb20">
-                                <img src="~/userasset/images/services/winterwedding.jpg" class="img-responsive img-rounded" alt="">
-                            </figure>
-                        </div>
-
-                        <div class="post-wrapper">
-                            <!-- <div class="date-box">
-                                <div class="day">26</div>
-                                <div class="month">FEB</div>
-                            </div> -->
-
-                            <div class="post-text">
-                                <h3><a href="#">THE ART OF ORGANIZING IMPECCABLE WINTER WEDDINGS</a></h3>
-                                <p>For a majority of people, winter is the most preferred season for weddings. Remarkably couples like to enjoy their wedding bliss in the winter season and there are numerous reasons for that; from ravishing weather, frosty breeze, cozy ambience to wonderful cuisine, décor options and pristine destinations. However, wedding in winters requires to be taken care of a bundle of pre-requisites and needs too much planning as well.</p>
-
-                                <div class="readmore-btn">
-                                    <button id="btnwinter" data-toggle="modal" data-target="#myModalWinter">Read More</button>
-                                </div>
-                            </div>
-
-
-                            <div class="clearfix"></div>
-                        </div>
-
-                        <div id="myModal" class="modal" role="dialog">
-
-                            <!-- Modal content -->
-                            <div class="modal-content">
-                                <span class="close">&times;</span>
-                                <div class="blog-title text-center">
-                                    <h2>Flowering Season & Markets of India</h2>
-                                </div>
-                                <div class="blog-text">
-                                    <div class="blog-para">
-                                        <p>
-                                            Speaking in flowers has been the most enchanting way to get on the
-                                            horn for ages. Forevermore, flowers and weddings have been in a
-                                            relationship of long standing. In a country like India, most of the
-                                            people accentuate on flower decorations while planning out their
-                                            weddings. Right from the wedding bouquet of a bride, the floral
-                                            downpour by bridesmaids, the boutonnieres of the groom and
-                                            groomsmen, to the blossoming aisles and reception tables; flowers
-                                            have an integral roleplay in our weddings. However, now-a-days it’s
-                                            just substantially more! While giving a thought to the contemporary
-                                            floral-wedding elements, customized flower jewelry and hair
-                                            accessories are the cornerstones of a bridal apparel. The floral
-                                            cascades dripping with flowers are one of the legitimate beauties in
-                                            the recent wedding trends. Moreover, blooming backdrop for the bride
-                                            and groom is yet another embracing plug-in for a perfect fairly-tale
-                                            wedding album!
-                                        </p>
-                                        <p>
-                                            The October-February time frame that witness the winter season in
-                                            India is the most accessible time for different species of beautiful
-                                            blooming annuals. The seeds of winter flowering annuals are sown in
-                                            October-November that almost hibernate during the cold months of
-                                            December or January and start growing as soon as the spring sets in.
-                                            Hence, the winter weddings can have the advantage of these seasonal
-                                            flowers having a tremendous variety of colour, size and form in an
-                                            affordable budget. However, in order to incorporate a galore of
-                                            flowers in your wedding episode, sky isn’t the limit! It’s your
-                                            budget allocation, flowering seasons, and above all the
-                                            accessibility to the top flower markets of India.
-                                        </p>
-                                        <p>
-                                            <span>
-                                                Here is the list of the top-notch flower markets explored by
-                                                The
-                                                Planning Paradise just for you!
-                                            </span>
-                                        </p>
-                                    </div>
-                                    <div class="p-para">
-                                        <span>Krishna Rajendra (KR) Market, Bangalore –</span>
-                                        <p>
-                                            The Krishna Rajendra (KR) Market in Bangalore (also known as City
-                                            Market) undertakes most of the wholesale trade in traditional
-                                            flowers. Modern flowers are traded in Russel market. Jasmine,
-                                            Crossandra, Marigold, Chrysanthemums and Aster are the major flower
-                                            species traded here. However, insignificant quantities of Rose, both
-                                            in loose blooms or long stemmed and Gladiolus are also traded. This
-                                            market witnesses a seasonal arrival of flowers. Jasmine season in
-                                            the market is between August and January whereas Chrysanthemums
-                                            start arriving in July lasting up to October. However, due to
-                                            Dussehra the demand for Chrysanthemum, Marigold and Aster upturns
-                                            during October. Most of the trade takes place at predetermined
-                                            contract prices. The city service buses carry maximum flowers to the
-                                            city market from the villages and suburbs of Bangalore whereas long
-                                            distance flowers are transported by bus, truck or train.
-                                        </p>
-                                    </div>
-                                    <div class="p-para">
-                                        <span>Ghazipur Phool Mandi, Delhi – </span>
-                                        <p>
-                                            The Ghazipur flower market in Delhi is very vast, and it serves all
-                                            types of flower needs to wholesalers, retailers, and final
-                                            consumers. One can witness the true beauty of this market during
-                                            midnight at around 3 am to enjoy the colourful flowers and its aroma
-                                            to soothe your soul. The stalls are beautifully decorated with
-                                            exotic flowers, and the famous flower basket is sold here at
-                                            wholesale rates. One can easily find diverse species of flowers
-                                            here. Artificial flowers in the shades of yellows, reds, oranges and
-                                            whites are also available. The predominant flower species traded at
-                                            this market are: Lilies, Orchids, Gerberas, Roses, Marigold,
-                                            Anthuriums, Carnations, Tulips and Aster.
-                                        </p>
-                                    </div>
-                                    <div class="p-para">
-                                        <span>Dal Lake Flower Market, Srinagar –</span>
-                                        <p>
-                                            The top-selling flowers in India comes from this market that makes it
-                                            famous. The market comes alive at the crack of dawn when the sellers
-                                            gather in their canoes to sell fresh flowers. It’s a sheer visual
-                                            delight to witness the beauty of the breath-taking floating Flower
-                                            Market that offers an eye-soothing image of flowers.
-                                        </p>
-                                    </div>
-                                    <div class="p-para">
-                                        <span>Mallik Ghat, Howrah Bridge, Calcutta – </span>
-                                        <p>
-                                            Found near the Hooghly River, this market is just beneath the divine
-                                            Howrah Bridge. It offers exquisite roses and diverse blossoms;
-                                            however, nothing overpowers the beholder other than the orange and
-                                            yellow marigolds which satisfies the festive as well as the wedding
-                                            rituals requirement.
-                                        </p>
-                                    </div>
-                                    <div class="p-para">
-                                        <span>Dadar Phool Mandi, Mumbai –</span>
-                                        <p>
-                                            If you wish to witness a heaven on earth, then you should probably
-                                            visit this amazing flower market in Mumbai known as the Dadar Phool
-                                            Mandi. The time frame of 4 am to 9 am is just perfect to pay a visit
-                                            to this market. Undoubtedly the aroma of the magical flowers and its
-                                            beauty will make you smile wide. One can find a wide variety of
-                                            flowers here as there are more than 600 stalls here making it
-                                            marvellous and one of the big flower markets in India.
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <span>Devraja Market, Mysore –</span>
-                                        <p>
-                                            The Devraja Market is Mysore is massively spread across 3 acres of
-                                            land. This market has an ancient history associated with it that
-                                            dates back to the reign of Tipu Sulatan in the 18th century. It is
-                                            named after erstwhile Maharaja Dodda Devaraja Wodeyar. Apart from
-                                            fresh flowers the market also trades, fruits, vegetables, puja
-                                            materials, etc. It is one of the tourist sites of Mysore.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <!-- Winter wedding popup -->
-                        <div id="myModalWinter" class="modal">
-
-                            <!-- Modal content -->
-                            <div class="modal-content">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                <div class="blog-title text-center">
-                                    <h2>THE ART OF ORGANIZING IMPECCABLE WINTER WEDDINGS</h2>
-                                </div>
-                                <div class="blog-text">
-                                    <div class="blog-para">
-                                        <p>
-                                            For a majority of people, winter is the most preferred season for weddings. Remarkably couples like to enjoy their wedding bliss in the winter season and there are numerous reasons for that; from ravishing weather, frosty breeze, cozy ambience to wonderful cuisine, décor options and pristine destinations. However, wedding in winters requires to be taken care of a bundle of pre-requisites and needs too much planning as well. Regardless of your plan of tying the knot in your hometown or outlining a destination wedding, you need to take care of imperative things along with the additional preparatory measures for winters. Moreover, it is essential to pay heed to the celebration along with comfort as undoubtedly you would never like your guests getting chilled to their bones in the wedding. On this extent, it becomes a priority that your wedding celebration is cozy and warm for you and for your guests as well.
-                                        </p>
-                                        <p> <i>Here are a few implications to make your wedding a grand affair with a cozy, warm and intimate celebration:</i> </p>
-                                        <p>
-                                            <b>Wedding Venues: </b>
-                                            As the winter weddings are completely distinctive from the summer weddings, as spaces are compact and it is always good to go with the smaller dinner tables. This will help you have the feel of an intimate celebration; your wedding guests would also take the delight of the celebration. Having comfortable lounge areas at the venue will lend a hand to the wedding guests to relish a wonderful time throughout the event. It is perhaps the finest way to take your wedding to another level from cold to cozy. Arranging fireplaces or fire pit at the wedding venue will simply add extra warmth to the wedding. There is nothing cozier than arranging for fireplace at the wedding but make sure to have it at a safe place so that your wedding guests are safe.
-                                        </p>
-                                        <p>
-                                            <b>Decoration:</b>
-                                            Lights are an indispensable part of the decor which are crucial not only for the photography but also for illuminating the wedding elegance and creating the perfect ambience of your venue. You don’t have the access to the lights in winters as compared to the summers; hence in winters you could play with different types of lighting throughout your wedding event in order to avoid the darkness and gloominess from the venue. Be more creative with lighting, there is a lot to add to the décor of the venue by just using a blend of dreamy fairy lights candles, chandeliers and Edison bulbs. Stay warm with the white tones to create a stunning sparkling effect.
-                                            Moreover, candlesticks or pillar candles in winters are one of the preeminent ways to create an ambience. It also makes the whole ambience intimate, cozy and warm. They can also sustain in bringing the physical warmth to the venue and a welcoming impact.
-                                            Also the winter season comes out with the access to the best of beautiful flowers, both Indian and exotic. This can elevate your wedding décor game to greater heights. They can stay fresh for a prolonged time as of the season and weather conditions and you have the advantage to formulate high-quality use of the flowers and have an enthralling, and graceful wedding decor!
-
-                                        </p>
-                                    </div>
-                                    <div class="p-para">
-                                        <b>Food:</b>
-                                        <p>
-                                            The winter season is just romantic or cozy but when it comes to food and delicacies there is no other season than winter the savor the flavor and the warmth of the piping hot food. Work with your caterer to plan a meal that is warming and seasonal. The wedding menu should not consist of food items that are heavy or stuffy, just replace the menu with some great seasonal and be creative with the food. You can have a delectable food items in your wedding in winters like a sizzling cup of soup or piping hot noodles with Manchurian balls, a hot Kulhad of Rabdi, Jalebi, Gulab Jamun, choco lava cakes, puddings that should be served throughout the event on the wedding venue.
-                                            In Addition to this let your guests savor on a dose of spicy-tangy appetizers like Cheese Balls, Pakodas, grilled cheese sandwiches, fried chicken, kababs, Spring Rolls or Pasta etc. Also ensure to keep your guests warm and have something hot for them to enjoy at all times with beverages like tea, coffee or hot chocolate counters running throughout your wedding. Work with your caterers to craft a creative menu for your wedding that incorporates luscious cuisines like Italian, Chinese, Mexican, and Indian that the guest would love to try and are easily adaptive to the taste and flavors. And most importantly make special arrangements to keep the food, beverages and all the eating stuff sizzling hot!
-
-                                        </p>
-                                    </div>
-
-
-                                </div>
-                            </div>
-
-                        </div>
 
 
                     </div>
                 </div>
+                }
+
 
             </div>
 
         </div>
     </div>
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+            <div class="blog-title text-center">
+                
+            </div>
+            <div class="blog-text" id="poptext">
+               
+            </div>
+        </div>
+
+    </div>
 </div>
 <script>
-        function myFunction() {
-        var popup = document.getElementById("myPopup");
-        popup.classList.toggle("show");
-        }
-        // Get the modal
+
+    function showpop(ptext) {
         var modal = document.getElementById("myModal");
+        document.getElementById("poptext").innerHTML = ptext;
+        modal.style.display = "block";
+    }
 
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
 
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
 
-        // When the user clicks the button, open the modal
-        btn.onclick = function () {
-            modal.style.display = "block";
-        }
 
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function () {
-            modal.style.display = "none";
-        }
+</script>
+<script>
 
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
+    //function myFunction() {
+    //    var popup = document.getElementById("myPopup");
+    //    popup.classList.toggle("show");
+    //}
+    //// Get the modal
+    //var modal = document.getElementById("myModal");
+
+    //// Get the button that opens the modal
+    //var btn = document.getElementById("myBtn");
+
+    //// Get the <span> element that closes the modal
+    //var span = document.getElementsByClassName("close")[0];
+
+    //// When the user clicks the button, open the modal
+    //btn.onclick = function () {
+    //    modal.style.display = "block";
+    //}
+
+    //// When the user clicks on <span> (x), close the modal
+    //span.onclick = function () {
+    //    modal.style.display = "none";
+    //}
+
+    //// When the user clicks anywhere outside of the modal, close it
+    //window.onclick = function (event) {
+    //    if (event.target == modal) {
+    //        modal.style.display = "none";
+    //    }
+    //}
 </script>

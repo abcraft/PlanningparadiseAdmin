@@ -45,6 +45,9 @@
                                     @Html.DisplayNameFor(model => model.Destination_Heading)
                                 </th>
                                 <th>
+                                    @Html.DisplayNameFor(model => model.Destination_Text)
+                                </th>
+                                <th>
                                     @Html.DisplayNameFor(model => model.IsNational)
                                 </th>
                                 <th>
@@ -59,28 +62,31 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>
-                                        <img src="~/Images/DestinationWedding/@item.Destination_Img" width="300" alt="Destination Image" />
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Destination_Heading)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.IsNational)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.IsInterNational)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.IsActive)
-                                    </td>
-                                    <td>
-                                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                                        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    <img src="~/Images/DestinationWedding/@item.Destination_Img" width="300" alt="Destination Image" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Destination_Heading)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Destination_Text)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IsNational)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IsInterNational)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IsActive)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>

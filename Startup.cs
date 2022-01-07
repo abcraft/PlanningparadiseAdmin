@@ -36,6 +36,10 @@ namespace PlanningParadiseAdmin
                 AddEntityFrameworkStores<ApplicationDbContext>()
                  .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>
                  (TokenOptions.DefaultProvider);
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(90);//You can set Time   
+            });
+
             services.AddMvc();
             services.AddHealthChecks();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
@@ -57,7 +61,7 @@ namespace PlanningParadiseAdmin
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
 
             app.UseAuthentication();

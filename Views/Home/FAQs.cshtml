@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<PlanningParadiseAdmin.Models.FAQ>
+@{
     ViewData["Title"] = "FAQ's - The Planning Paradise";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
@@ -72,219 +73,23 @@
     <div class="container">
         <div class="row">
             <div class="accordions">
+               @foreach (var item in Model)
+               {
+
+
                 <button class="accordion" style="border-top:1px solid rgba(128, 128, 128,.2)">
                     <span>
-                        What can The
-                        Planning Paradise” do for me?
+                        @item.Faq_Heading
                     </span>
                 </button>
                 <div class="panel">
                     <p>
-                        We take the plunge of taking care that every aspect and element of your wedding is at par
-                        supremacy. Even the minute details and most remote requirements are priority for us. We
-                        aim to place all the pieces of your wedding puzzle together and explore every
-                        possibility to make your event unforgettable. Right from identifying the ideal
-                        destination, picking suitable venues, consultation, planning, designing, and
-                        coordination are all taken care of by our professional team.
+                        @item.Faq_Text
                     </p>
                 </div>
+               }
 
-                <button class="accordion"><span>Is it expensive to hire a wedding planner?</span></button>
-                <div class="panel">
-                    <p>
-                        Our wedding planning and management services are made-to-measure your needs and budgets
-                        by virtue of our vast network of vendors that we strive on preferential rates passing on
-                        to you to benefit from. Our prime focus is to deliver a memorable wedding celebration
-                        for you keeping in view your budgets and expectations.
-                    </p>
-                </div>
 
-                <button class="accordion">
-                    <span>
-                        Does The Planning Paradise provide services
-                        overseas?
-                    </span>
-                </button>
-                <div class="panel">
-                    <p>
-                        As we plan and manage exclusive destination weddings, our services can be affianced
-                        globally. We have created up to 300+ enchanted weddings so far, each of them
-                        marvellously unique and magical from the other working with a vast network of vendors
-                        internationally in numerous cities around the world.
-                    </p>
-                </div>
-
-                <button class="accordion">
-                    <span>
-                        What kind of weddings does The Planning Paradise specialize
-                        in?
-                    </span>
-                </button>
-                <div class="panel">
-                    <p>
-                        Although we specialize in Indian weddings, we have also planned and managed weddings of
-                        different cultures and religions across different customs and traditions. Our
-                        acquaintance and experience is not just limited to traditional weddings. Our team have
-                        the potential and expertise to propose various ground-breaking concepts for your big
-                        day.
-                    </p>
-                </div>
-
-                <button class="accordion">
-                    <span>
-                        Can The Planning Paradise assist if we bring our own
-                        vendors?
-                    </span>
-                </button>
-                <div class="panel">
-                    <p>
-                        Apart from our vendor association, our clients have the ease and comfort of working with
-                        any vendors they like. You may have certain vendors in your mind since the wedding was
-                        announced like a peculiar photographer or a make-up artist, etc. We are more than happy
-                        to assist the vendors that you choose to work with and manage their services for your
-                        big day.
-                    </p>
-                </div>
-
-                <button class="accordion">
-                    <span>
-                        What does the Wedding Planning and Management service
-                        cost?
-                    </span>
-                </button>
-                <div class="panel">
-                    <p>
-                        Our wedding planning and management services are tailored to conform your necessities and
-                        preferences. Hence our pricing depends on numerous factors. We charge a one-time
-                        planning and management fee for our services with no hidden or extra costs. Your savings
-                        in terms of time, money, and effort are worth it when you decide to work with The
-                        Planning Paradise.
-                    </p>
-                </div>
-
-                <button class="accordion">
-                    <span>
-                        When is an ideal time to engage in a wedding planner’s
-                        service?
-                    </span>
-                </button>
-                <div class="panel">
-                    <p>
-                        Good things happen with time and efforts. We ensure your big day to be perfect and hence
-                        recommend affiancing our wedding planning and management services a minimum of 6-10
-                        months before you set the wedding dates. Our methodical approach to your big day
-                        requires multiple tools and practices that guarantees our effective progress in the
-                        right direction.
-                    </p>
-                </div>
-
-                <button class="accordion">
-                    <span>
-                        When is an ideal time to engage in a wedding planner’s
-                        service?
-                    </span>
-                </button>
-                <div class="panel">
-                    <p>
-                        While you move onto your wedding venture things may go beyond your control, and you may
-                        want to postpone or cancel your wedding event. We support you in negotiating the
-                        accurate contracts from the early stages to safeguard you in case of a postponement or
-                        cancellation. In the case of an unpredicted situation where a wedding may need to be
-                        postponed or cancelled, we assist you with contract flexibility and refunds where
-                        eligible.
-                    </p>
-                </div>
-
-                <button class="accordion">
-                    <span>
-                        What precautions is The Planning Paradise taking with the
-                        present health and safety challenges?
-                    </span>
-                </button>
-                <div class="panel">
-                    <p>
-                        The Planning Paradise have constantly preserved the uppermost canons of safety, health,
-                        and hygiene. During the present times our team members ensure the services to be in
-                        terms of Health & Safety, as well as trained for COVID-19 Precautions and Guidelines.
-                        Moreover, we affiance that our vendors to follow best practices of Health & Safety and
-                        observe with the international hygiene standards defined by the local authorities and
-                        the World Health Organization (WHO).
-                    </p>
-                </div>
-
-                <button class="accordion"><span>How does the Force Majeure protect me?</span></button>
-                <div class="panel">
-                    <p>
-                        If any inevitable incident or an Act of God (Force Majeure), such as a fire, flood,
-                        earthquake, pandemic, or other natural calamity that shall cause you to cancel your
-                        event; we will we assist you with contract flexibility and refunds where eligible.
-                    </p>
-                </div>
-
-                <button class="accordion">
-                    <span>
-                        Does your team take on the liaison with our guests and RSVP
-                        Management?
-                    </span>
-                </button>
-                <div class="panel">
-                    <p>
-                        Indians firmly believe that Guests are next to GOD and hence we would love knowing your
-                        family and friends better. We highly cherish our principles and customs and make every
-                        effort to provide comfort and a home like feeling to the guest arrived at your wedding.
-                        While most families choose to liaise with their guests themselves, we are happy to take
-                        this over from you as an additional service. Our team gathers guest information, follows
-                        up, seeks confirmation, notes special requests, and does the whole lot possible to
-                        guarantee your guests have the most contented, stress-free, and relaxed experience at
-                        your wedding.
-                    </p>
-                </div>
-
-                <button class="accordion">
-                    <span>
-                        What if I want my wedding to be a private
-                        affair?
-                    </span>
-                </button>
-                <div class="panel">
-                    <p>
-                        We do take on a lot of prestigious celebrations where our clients prefer to keep their
-                        events private. For this, we trail a set of rules and cautiously written out contracts
-                        that help protect our client’s privacy while preserving the supreme level of safety and
-                        security for their prestigious guests.
-                    </p>
-                </div>
-
-                <button class="accordion">
-                    <span>
-                        WDoes The Planning Paradise handle intimate
-                        weddings?
-                    </span>
-                </button>
-                <div class="panel">
-                    <p>
-                        Our clients may prefer hosting an intimate wedding, which is unforgettable for your close
-                        family and friends. We appreciate your necessities, budgets, preferences, and
-                        limitations to offer you with the finest solutions for your big day. Our team’s approach
-                        is personalized and devoted regardless of the extent of the wedding celebration.
-                    </p>
-                </div>
-
-                <button class="accordion">
-                    <span>
-                        Will Hardik & Darshita be planning and managing my
-                        wedding?
-                    </span>
-                </button>
-                <div class="panel">
-                    <p>
-                        Our Founder Director Hardik & Co-Founder Darshita trails the wedding planning and
-                        management business virtuously out of their passion for creating memorable memories for
-                        the bride and groom and their guests. Being resourceful Wedding Planners of
-                        International standards, they are adept at planning and executing high-end weddings with
-                        latest and up-to-date trends as well as conceptual themes of modern times
-                    </p>
-                </div>
             </div>
         </div>
     </div>

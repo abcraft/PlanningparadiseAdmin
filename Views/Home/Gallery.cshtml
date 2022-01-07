@@ -1,13 +1,14 @@
-﻿@{
+﻿@model IEnumerable<PlanningParadiseAdmin.Models.Gallery>
+@{
     ViewData["Title"] = "Gallery The Planning Paradise";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
 <style>
-        .picframe {
-            width: 100% !important;
-            height: 250px !important;
-        }
+    .picframe {
+        width: 100% !important;
+        height: 250px !important;
+    }
 
         .picframe .img-responsive {
             width: 100% !important;
@@ -15,19 +16,19 @@
             object-fit: cover;
         }
 
-        @@media(max-width:768px) {
-            .picframe {
-                width: 100% !important;
-                height: 450px !important;
-            }
+    @@media(max-width:768px) {
+        .picframe {
+            width: 100% !important;
+            height: 450px !important;
         }
+    }
 
-        @@media(max-width:280px) {
-            .picframe {
-                width: 100% !important;
-                height: 300px !important;
-            }
+    @@media(max-width:280px) {
+        .picframe {
+            width: 100% !important;
+            height: 300px !important;
         }
+    }
 </style>
 <!-- subheader -->
 <section id="subheader" class="dark no-top no-bottom" data-stellar-background-ratio=".2">
@@ -70,398 +71,104 @@
 
                             <div id="tab1" class="tab_single_content">
                                 <div class="row">
+                                    @foreach (var item in Model)
+                                    {
+                                        <div class="col-md-4 text-center mb10">
+                                            <figure class="picframe img-rounded mb20">
+                                                <a class="image-popup" href="~/Images/gallery/@item.Gallery_Img">
+                                                    <span class="overlay-v">
+                                                        <i></i>
+                                                    </span>
+                                                </a>
+                                                <img src="~/Images/gallery/@item.Gallery_Img" class="img-responsive img-rounded"
+                                                     alt="">
+                                            </figure>
+                                        </div>
+                                    }
 
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <a class="image-popup" href="./images/gallery/p1.jpg">
-                                                <span class="overlay-v">
-                                                    <i></i>
-                                                </span>
-                                            </a>
-                                            <img src="~/userasset/images/gallery/p1.jpg" class="img-responsive img-rounded"
-                                                 alt="">
-                                        </figure>
+
+
+
                                     </div>
 
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <a class="image-popup" href="images/gallery/p6.jpg">
-                                                <span class="overlay-v">
-                                                    <i></i>
-                                                </span>
-                                            </a>
-                                            <img src="~/userasset/images/gallery/p6.JPG" class="img-responsive img-rounded"
-                                                 alt="">
-                                        </figure>
+                                <!-- <div id="tab2" class="tab_single_content">
+                                    <div class="row">
+
+                                        <div class="col-md-4 text-center mb10">
+                                            <figure class="picframe img-rounded mb20">
+                                                <iframe width="350" height="245"
+                                                    src="~/userasset/https://www.youtube.com/embed/OX2YsueXb6M?controls=0"
+                                                    title="YouTube video player" frameborder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowfullscreen></iframe>
+                                            </figure>
+                                        </div>
+
+                                        <div class="col-md-4 text-center mb10">
+                                            <figure class="picframe img-rounded mb20">
+                                                <iframe width="350" height="245"
+                                                    src="~/userasset/https://www.youtube.com/embed/OX2YsueXb6M?controls=0"
+                                                    title="YouTube video player" frameborder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowfullscreen></iframe>
+                                            </figure>
+                                        </div>
+
+                                        <div class="col-md-4 text-center mb10">
+                                            <figure class="picframe img-rounded mb20">
+                                                <iframe width="350" height="245"
+                                                    src="~/userasset/https://www.youtube.com/embed/OX2YsueXb6M?controls=0"
+                                                    title="YouTube video player" frameborder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowfullscreen></iframe>
+                                            </figure>
+                                        </div>
+
+                                        <div class="col-md-4 text-center mb10">
+                                            <figure class="picframe img-rounded mb20">
+                                                <a class="image-popup" href="images/story/1.jpg">
+                                                    <span class="overlay-v">
+                                                        <i></i>
+                                                    </span>
+                                                </a>
+                                                <img src="~/userasset/images/story/1.jpg" class="img-responsive img-rounded"
+                                                    alt="">
+                                            </figure>
+                                        </div>
+
+                                        <div class="col-md-4 text-center mb10">
+                                            <figure class="picframe img-rounded mb20">
+                                                <a class="image-popup" href="images/story/1.jpg">
+                                                    <span class="overlay-v">
+                                                        <i></i>
+                                                    </span>
+                                                </a>
+                                                <img src="~/userasset/images/story/1.jpg" class="img-responsive img-rounded"
+                                                    alt="">
+                                            </figure>
+                                        </div>
+
+                                        <div class="col-md-4 text-center mb10">
+                                            <figure class="picframe img-rounded mb20">
+                                                <a class="image-popup" href="images/story/1.jpg">
+                                                    <span class="overlay-v">
+                                                        <i></i>
+                                                    </span>
+                                                </a>
+                                                <img src="~/userasset/images/story/1.jpg" class="img-responsive img-rounded"
+                                                    alt="">
+                                            </figure>
+                                        </div>
+
+                                        <div class="clearfix"></div>
                                     </div>
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <a class="image-popup" href="images/gallery/p8.jpg">
-                                                <span class="overlay-v">
-                                                    <i></i>
-                                                </span>
-                                            </a>
-                                            <img src="~/userasset/images/gallery/p8.jpg" class="img-responsive img-rounded"
-                                                 alt="">
-                                        </figure>
-                                    </div>
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <a class="image-popup" href="images/gallery/p4.jpg">
-                                                <span class="overlay-v">
-                                                    <i></i>
-                                                </span>
-                                            </a>
-                                            <img src="~/userasset/images/gallery/p4.jpg" class="img-responsive img-rounded"
-                                                 alt="">
-                                        </figure>
-                                    </div>
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <a class="image-popup" href="images/gallery/p5.jpg">
-                                                <span class="overlay-v">
-                                                    <i></i>
-                                                </span>
-                                            </a>
-                                            <img src="~/userasset/images/gallery/p5.jpg" class="img-responsive img-rounded"
-                                                 alt="">
-                                        </figure>
-                                    </div>
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <a class="image-popup" href="images/gallery/g1.jpg">
-                                                <span class="overlay-v">
-                                                    <i></i>
-                                                </span>
-                                            </a>
-                                            <img src="~/userasset/images/gallery/g1.jpg" class="img-responsive img-rounded"
-                                                 alt="">
-                                        </figure>
-                                    </div>
-
-
-
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="row">
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <a class="image-popup" href="./images/gallery/g2.jpg">
-                                                <span class="overlay-v">
-                                                    <i></i>
-                                                </span>
-                                            </a>
-                                            <img src="~/userasset/images/gallery/g2.jpg" class="img-responsive img-rounded"
-                                                 alt="">
-                                        </figure>
-                                    </div>
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <a class="image-popup" href="images/gallery/g3.jpg">
-                                                <span class="overlay-v">
-                                                    <i></i>
-                                                </span>
-                                            </a>
-                                            <img src="~/userasset/images/gallery/g3.jpg" class="img-responsive img-rounded"
-                                                 alt="">
-                                        </figure>
-                                    </div>
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <a class="image-popup" href="images/gallery/g4.jpg">
-                                                <span class="overlay-v">
-                                                    <i></i>
-                                                </span>
-                                            </a>
-                                            <img src="~/userasset/images/gallery/g4.jpg" class="img-responsive img-rounded"
-                                                 alt="">
-                                        </figure>
-                                    </div>
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <a class="image-popup" href="images/gallery/g5.jpg">
-                                                <span class="overlay-v">
-                                                    <i></i>
-                                                </span>
-                                            </a>
-                                            <img src="~/userasset/images/gallery/g5.jpg" class="img-responsive img-rounded"
-                                                 alt="">
-                                        </figure>
-                                    </div>
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <a class="image-popup" href="images/gallery/g6.jpg">
-                                                <span class="overlay-v">
-                                                    <i></i>
-                                                </span>
-                                            </a>
-                                            <img src="~/userasset/images/gallery/g6.jpg" class="img-responsive img-rounded"
-                                                 alt="">
-                                        </figure>
-                                    </div>
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <a class="image-popup" href="images/gallery/g7.jpg">
-                                                <span class="overlay-v">
-                                                    <i></i>
-                                                </span>
-                                            </a>
-                                            <img src="~/userasset/images/gallery/g7.jpg" class="img-responsive img-rounded"
-                                                 alt="">
-                                        </figure>
-                                    </div>
-
-
-
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="row">
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <a class="image-popup" href="./images/gallery/g11.jpg">
-                                                <span class="overlay-v">
-                                                    <i></i>
-                                                </span>
-                                            </a>
-                                            <img src="~/userasset/images/gallery/g11.jpg" class="img-responsive img-rounded"
-                                                 alt="">
-                                        </figure>
-                                    </div>
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <a class="image-popup" href="images/gallery/g12.jpg">
-                                                <span class="overlay-v">
-                                                    <i></i>
-                                                </span>
-                                            </a>
-                                            <img src="~/userasset/images/gallery/g12.jpg" class="img-responsive img-rounded"
-                                                 alt="">
-                                        </figure>
-                                    </div>
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <a class="image-popup" href="images/gallery/g13.jpg">
-                                                <span class="overlay-v">
-                                                    <i></i>
-                                                </span>
-                                            </a>
-                                            <img src="~/userasset/images/gallery/g13.jpg" class="img-responsive img-rounded"
-                                                 alt="">
-                                        </figure>
-                                    </div>
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <a class="image-popup" href="images/gallery/g14.jpg">
-                                                <span class="overlay-v">
-                                                    <i></i>
-                                                </span>
-                                            </a>
-                                            <img src="~/userasset/images/gallery/g14.jpg" class="img-responsive img-rounded"
-                                                 alt="">
-                                        </figure>
-                                    </div>
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <a class="image-popup" href="images/gallery/g15.jpg">
-                                                <span class="overlay-v">
-                                                    <i></i>
-                                                </span>
-                                            </a>
-                                            <img src="~/userasset/images/gallery/g15.jpg" class="img-responsive img-rounded"
-                                                 alt="">
-                                        </figure>
-                                    </div>
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <a class="image-popup" href="images/gallery/g16.jpg">
-                                                <span class="overlay-v">
-                                                    <i></i>
-                                                </span>
-                                            </a>
-                                            <img src="~/userasset/images/gallery/g16.jpg" class="img-responsive img-rounded"
-                                                 alt="">
-                                        </figure>
-                                    </div>
-
-
-
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="row">
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <a class="image-popup" href="./images/gallery/g8.jpg">
-                                                <span class="overlay-v">
-                                                    <i></i>
-                                                </span>
-                                            </a>
-                                            <img src="~/userasset/images/gallery/g8.jpg" class="img-responsive img-rounded"
-                                                 alt="">
-                                        </figure>
-                                    </div>
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <a class="image-popup" href="images/gallery/g9.jpg">
-                                                <span class="overlay-v">
-                                                    <i></i>
-                                                </span>
-                                            </a>
-                                            <img src="~/userasset/images/gallery/g9.jpg" class="img-responsive img-rounded"
-                                                 alt="">
-                                        </figure>
-                                    </div>
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <a class="image-popup" href="images/gallery/g10.jpg">
-                                                <span class="overlay-v">
-                                                    <i></i>
-                                                </span>
-                                            </a>
-                                            <img src="~/userasset/images/gallery/g10.jpg" style="background-position: top;" class="img-responsive img-rounded"
-                                                 alt="">
-                                        </figure>
-                                    </div>
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <a class="image-popup" href="images/gallery/g17.jpg">
-                                                <span class="overlay-v">
-                                                    <i></i>
-                                                </span>
-                                            </a>
-                                            <img src="~/userasset/images/gallery/g17.jpg" class="img-responsive img-rounded"
-                                                 alt="">
-                                        </figure>
-                                    </div>
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <a class="image-popup" href="images/gallery/g18.jpg">
-                                                <span class="overlay-v">
-                                                    <i></i>
-                                                </span>
-                                            </a>
-                                            <img src="~/userasset/images/gallery/g18.jpg" class="img-responsive img-rounded"
-                                                 alt="">
-                                        </figure>
-                                    </div>
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <a class="image-popup" href="images/gallery/g19.jpg">
-                                                <span class="overlay-v">
-                                                    <i></i>
-                                                </span>
-                                            </a>
-                                            <img src="~/userasset/images/gallery/g19.jpg" class="img-responsive img-rounded"
-                                                 alt="">
-                                        </figure>
-                                    </div>
-
-
-
-                                    <div class="clearfix"></div>
-                                </div>
+                                </div> -->
 
                             </div>
 
-                            <!-- <div id="tab2" class="tab_single_content">
-                                <div class="row">
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <iframe width="350" height="245"
-                                                src="~/userasset/https://www.youtube.com/embed/OX2YsueXb6M?controls=0"
-                                                title="YouTube video player" frameborder="0"
-                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                allowfullscreen></iframe>
-                                        </figure>
-                                    </div>
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <iframe width="350" height="245"
-                                                src="~/userasset/https://www.youtube.com/embed/OX2YsueXb6M?controls=0"
-                                                title="YouTube video player" frameborder="0"
-                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                allowfullscreen></iframe>
-                                        </figure>
-                                    </div>
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <iframe width="350" height="245"
-                                                src="~/userasset/https://www.youtube.com/embed/OX2YsueXb6M?controls=0"
-                                                title="YouTube video player" frameborder="0"
-                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                allowfullscreen></iframe>
-                                        </figure>
-                                    </div>
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <a class="image-popup" href="images/story/1.jpg">
-                                                <span class="overlay-v">
-                                                    <i></i>
-                                                </span>
-                                            </a>
-                                            <img src="~/userasset/images/story/1.jpg" class="img-responsive img-rounded"
-                                                alt="">
-                                        </figure>
-                                    </div>
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <a class="image-popup" href="images/story/1.jpg">
-                                                <span class="overlay-v">
-                                                    <i></i>
-                                                </span>
-                                            </a>
-                                            <img src="~/userasset/images/story/1.jpg" class="img-responsive img-rounded"
-                                                alt="">
-                                        </figure>
-                                    </div>
-
-                                    <div class="col-md-4 text-center mb10">
-                                        <figure class="picframe img-rounded mb20">
-                                            <a class="image-popup" href="images/story/1.jpg">
-                                                <span class="overlay-v">
-                                                    <i></i>
-                                                </span>
-                                            </a>
-                                            <img src="~/userasset/images/story/1.jpg" class="img-responsive img-rounded"
-                                                alt="">
-                                        </figure>
-                                    </div>
-
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div> -->
-
                         </div>
-
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 </div>

@@ -83,16 +83,13 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             }
 
             var fAQ = await _context.FAQ.FindAsync(id);
-            FaqVM fvm = new FaqVM();
-            fvm.ID = fAQ.ID;
-            fvm.Faq_Heading = fAQ.Faq_Heading;
-            fvm.Faq_Text = fAQ.Faq_Text;
+           
 
             if (fAQ == null)
             {
                 return NotFound();
             }
-            return View(fvm);
+            return View(fAQ);
         }
 
         // POST: Admin/FAQs/Edit/5
@@ -100,7 +97,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, FaqVM fAQ)
+        public async Task<IActionResult> Edit(int id, FAQ fAQ)
         {
             if (id != fAQ.ID)
             {
@@ -111,12 +108,7 @@ namespace PlanningParadiseAdmin.Areas.Admin.Controllers
             {
                 try
                 {
-                    FaqVM fvm = new FaqVM();
-                    fvm.ID = fAQ.ID;
-                    fvm.Faq_Heading = fAQ.Faq_Heading;
-                    fvm.Faq_Text = fAQ.Faq_Text;
-                    _context.Update(fvm);
-
+                    _context.Update(fAQ);
                     TempData["message"] = "Updated";
                     await _context.SaveChangesAsync();
                 }
